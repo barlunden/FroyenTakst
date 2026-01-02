@@ -1,18 +1,21 @@
 /**
- * PostCSS configuration for Tailwind CSS (v4) and Autoprefixer.
+ * PostCSS configuration for Tailwind CSS v4 (using the separate PostCSS plugin)
  *
- * This simple config is suitable for Astro projects using Tailwind.
- * If you add additional PostCSS plugins (e.g. `postcss-import` or `postcss-nesting`),
- * include them here in the appropriate order:
- *   - postcss-import
- *   - postcss-nesting (or postcss-preset-env)
- *   - tailwindcss
- *   - autoprefixer
+ * Notes:
+ * - Install the required packages before running the dev server:
+ *     npm install -D @tailwindcss/postcss postcss autoprefixer
+ *
+ * - This configuration uses the PostCSS plugin package for Tailwind v4:
+ *     @tailwindcss/postcss
+ *
+ * - Keep Autoprefixer enabled to ensure vendor prefixes where necessary.
  */
 
 module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+  plugins: [
+    // Tailwind v4 moved the PostCSS plugin into a separate package:
+    require("@tailwindcss/postcss"),
+    // Autoprefixer for cross-browser compatibility:
+    require("autoprefixer"),
+  ],
 };
