@@ -11,8 +11,29 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
         <title>{title}</title>
         {description && <meta name="description" content={description} />}
 
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        {
+            description && (
+                <meta property="og:description" content={description} />
+            )
+        }
+        <meta property="og:image" content="/froyen_logo.webp" />
+        <meta property="og:locale" content="nb_NO" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        {
+            description && (
+                <meta name="twitter:description" content={description} />
+            )
+        }
+        <meta name="twitter:image" content="/froyen_logo.webp" />
+
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    </head>           
+    </head>
 
     <body
         class="min-h-screen bg-gray-50 text-slate-800 antialiased flex flex-col"
@@ -23,9 +44,15 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
                 <div class="flex items-center justify-between h-28">
                     <a href="/" class="flex items-center gap-3">
                         <!-- Logo image -->
-                        <span class="inline-flex items-center justify-center bg-[#0f3b66] rounded-md p-2">
-                           <img src="/froyen_logo.webp" alt="Frøyen Takst" class="site-logo h-14! md:h-18!" />
-                         </span>
+                        <span
+                            class="inline-flex items-center justify-center bg-[#0f3b66] rounded-md p-2"
+                        >
+                            <img
+                                src="/froyen_logo.webp"
+                                alt="Frøyen Takst"
+                                class="site-logo h-14! md:h-18!"
+                            />
+                        </span>
                     </a>
 
                     <!-- Desktop nav -->
@@ -178,34 +205,3 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
         </script>
     </body>
 </html>
-    
-        
-        
-        
-                        
-            
-            
-                
-                
-                
-                
-                        
-            
-                
-                
-                
-                
-                
-                
-                
-                        
-            
-                
-                
-                        
-            
-                
-                
-                
-            
-        
