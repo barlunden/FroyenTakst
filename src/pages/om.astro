@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+const title = 'Om — Frøyen Takst';
+const description = 'Om Frøyen Takst: erfaring, tilnærming og verdi';
+---
+<Layout {title} {description}>
+  <article class="prose prose-slate max-w-none">
+    <header class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-primary">Om Frøyen Takst</h1>
+      <p class="mt-3 text-slate-600">Frøyen Takst gir faglege og uavhengige takstar for privatpersonar og næring. Vi kombinerer handverkserfaring, teknisk innsikt og lokal marknadskunnskap for å gi klare, pålitelege vurderingar.</p>
+    </header>
+
+    <section class="grid gap-8 md:grid-cols-2 mb-10">
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-2">Vår erfaring</h2>
+        <p class="text-sm text-slate-600 mb-3">Vi har mange års erfaring innan taksering av bustad, fritidsbustad og næringseiendom. Vårt arbeid nyttar anerkjente metodar og relevante standardar for å sikre konsistente og dokumenterbare resultat.</p>
+        <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+          <li>Boligtakst og verdivurderingar</li>
+          <li>Tilstandsrapportar (TK, TEK-relevant dokumentasjon)</li>
+          <li>Skadetaksering for forsikringssaker</li>
+          <li>Næringstakst og arealvurdering</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-2">Vår tilnærming</h2>
+        <p class="text-sm text-slate-600 mb-3">Vi legg vekt på openheit, god dokumentasjon og praktiske råd. Rapportane våre er utforma for både fagfolk og private kundar — med tydelige konklusjonar og forslag til oppfølging ved behov.</p>
+        <div class="mt-4">
+          <div class="badge">Tryggleik</div>
+          <div class="badge mt-2">Fagleg tyngde</div>
+          <div class="badge mt-2">Lokal kunnskap</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3">Kvalifikasjonar og sertifiseringar</h2>
+      <p class="text-sm text-slate-600 mb-3">Våre takstmenn har relevant utdanning og sertifiseringar. Vi held oss oppdatert på regelverk, byggestandardar og marknadstrendar for å sikre at vurderingane våre er fagleg solide.</p>
+
+      <div class="grid md:grid-cols-3 gap-4 mt-4">
+        <div class="p-4 border rounded">
+          <div class="font-semibold">Fagbakgrunn</div>
+          <div class="text-sm text-slate-600 mt-1">Ingeniørar, byggfagleg erfaring og intern undervisning.</div>
+        </div>
+        <div class="p-4 border rounded">
+          <div class="font-semibold">Sertifiseringar</div>
+          <div class="text-sm text-slate-600 mt-1">Faglege kurs og godkjenningar innan taksering og tilstandsvurdering.</div>
+        </div>
+        <div class="p-4 border rounded">
+          <div class="font-semibold">Forsikring</div>
+          <div class="text-sm text-slate-600 mt-1">Profesjonell ansvarsforsikring for alle oppdrag.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-3">Kvifor velje oss?</h2>
+      <ul class="list-disc pl-5 text-sm text-slate-600 space-y-2">
+        <li>Presise og lettforståelege rapportar.</li>
+        <li>Rask respons og effektiv sakshandsaming.</li>
+        <li>Klare råd for vedlikehald og oppfølging.</li>
+        <li>Lokalkunnskap som gir realistiske verdianslag.</li>
+      </ul>
+    </section>
+
+    <aside class="p-6 bg-white rounded-md shadow-soft">
+      <h3 class="text-lg font-semibold mb-2">Ta kontakt</h3>
+      <p class="text-sm text-slate-600 mb-4">Vil du ha eit uforpliktande tilbod eller meir informasjon? Ta kontakt så finn vi løysinga som passar for ditt behov.</p>
+      <a href="/kontakt" class="btn btn-primary">Kontakt oss</a>
+    </aside>
+  </article>
+</Layout>

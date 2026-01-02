@@ -1,16 +1,175 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+const title = "Frøyen Takst — Hjem";
+const description =
+    "Profesjonell taksering av bolig, fritidsbolig og næring. Lokal ekspertise og tydelige rapporter.";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout {title} {description}>
+    <header class="bg-white rounded-md shadow-soft p-8 mb-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1
+                class="text-4xl md:text-5xl font-bold text-primary leading-tight"
+            >
+                Frøyen Takst
+            </h1>
+            <p class="mt-4 text-lg text-slate-600">
+                Profesjonell taksering — trygghet, faglig tyngde og lokal
+                markedskunnskap.
+            </p>
+
+            <div
+                class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3"
+            >
+                <a href="/kontakt" class="btn btn-primary">Be om tilbud</a>
+                <a href="/tjenester" class="btn btn-ghost"
+                    >Les om tjenestene våre</a
+                >
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="card text-center p-4">
+                    <div class="text-sm font-semibold text-slate-700">
+                        Rask levering
+                    </div>
+                    <div class="mt-2 text-sm text-slate-600">
+                        Effektiv saksbehandling og kort svartid ved behov.
+                    </div>
+                </div>
+
+                <div class="card text-center p-4">
+                    <div class="text-sm font-semibold text-slate-700">
+                        Tydelige rapporter
+                    </div>
+                    <div class="mt-2 text-sm text-slate-600">
+                        Klar dokumentasjon med bilder og anbefalte tiltak.
+                    </div>
+                </div>
+
+                <div class="card text-center p-4">
+                    <div class="text-sm font-semibold text-slate-700">
+                        Forsikrings- og salgstakst
+                    </div>
+                    <div class="mt-2 text-sm text-slate-600">
+                        Både verdivurdering og skadetaksering fra fagfolk.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto mb-10">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+                <h2 class="text-2xl font-semibold text-primary mb-3">
+                    Våre mest populære tjenester
+                </h2>
+                <p class="text-slate-600 mb-4">
+                    Vi dekker et bredt spekter av oppdrag — fra boligtakst og
+                    verdivurdering til næringstakst og skadetaksering.
+                </p>
+
+                <ul class="list-inside list-disc space-y-2 text-slate-600">
+                    <li>
+                        <strong>Boligtakst & verditakst</strong> — for kjøp, salg
+                        og finansiering.
+                    </li>
+                    <li>
+                        <strong>Tilstandsrapporter</strong> — dokumentasjon ved kjøp
+                        og rehabilitering.
+                    </li>
+                    <li>
+                        <strong>Skadetaksering</strong> — rapport for forsikring og
+                        reparasjon.
+                    </li>
+                    <li>
+                        <strong>Næringstakst</strong> — verdivurdering for selskaper
+                        og regnskap.
+                    </li>
+                </ul>
+
+                <div class="mt-6">
+                    <a href="/tjenester" class="btn btn-primary"
+                        >Se alle tjenester</a
+                    >
+                </div>
+            </div>
+
+            <div>
+                <div class="card p-6">
+                    <h3 class="text-lg font-semibold mb-2">
+                        Hvordan vi jobber
+                    </h3>
+                    <p class="text-slate-600 mb-4">
+                        Ved befaring kombinerer vi visuell inspeksjon,
+                        fotografisk dokumentasjon og faglig vurdering for å
+                        utarbeide en forståelig og handlingsorientert rapport.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-3 border rounded">
+                            <div class="font-medium">Dokumentasjon</div>
+                            <div class="text-sm text-slate-600 mt-1">
+                                Bilder og forklarende tekst.
+                            </div>
+                        </div>
+                        <div class="p-3 border rounded">
+                            <div class="font-medium">Konklusjon</div>
+                            <div class="text-sm text-slate-600 mt-1">
+                                Tydelige anbefalinger og prioriterte tiltak.
+                            </div>
+                        </div>
+                        <div class="p-3 border rounded">
+                            <div class="font-medium">Kommunikasjon</div>
+                            <div class="text-sm text-slate-600 mt-1">
+                                Rask oppfølging og tilgjengelighet.
+                            </div>
+                        </div>
+                        <div class="p-3 border rounded">
+                            <div class="font-medium">Tilpasning</div>
+                            <div class="text-sm text-slate-600 mt-1">
+                                Rapporter tilpasset formål (salg, forsikring,
+                                regnskap).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto mb-12">
+        <div class="bg-white p-6 rounded-md shadow-soft">
+            <h2 class="text-2xl font-semibold text-primary mb-3">
+                Trygghet gjennom faglig tyngde
+            </h2>
+            <p class="text-slate-600 mb-4">
+                Frøyen Takst bygger på erfaring, faglig kompetanse og lokal
+                markedskunnskap. Vi leverer vurderinger du kan stole på — enten
+                det gjelder salg, kjøp eller forsikringsoppgjør.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+                <div class="badge">Sertifiserte takstmenn</div>
+                <div class="badge">Ansvarsforsikret</div>
+                <div class="badge">Lokal ekspertise</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto text-center">
+        <h3 class="text-xl font-semibold mb-3">
+            Klar for en uforpliktende prat?
+        </h3>
+        <p class="text-slate-600 mb-6">
+            Fyll ut skjemaet på kontaktsiden eller ring oss direkte for raskt
+            svar og tilbud.
+        </p>
+        <div class="flex items-center justify-center gap-4">
+            <a href="/kontakt" class="btn btn-primary">Kontakt oss</a>
+            <a href="/referanser" class="text-slate-700 underline"
+                >Se referanser</a
+            >
+        </div>
+    </section>
+</Layout>

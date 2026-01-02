@@ -1,0 +1,241 @@
+@import "tailwindcss/index.css";
+
+/* Use the package's exported stylesheet entrypoint to avoid resolving
+   non-exported internal paths (e.g. "./components"). Tailwind's
+   `index.css` includes preflight, base/components and utilities. */
+
+/*
+  Frøyen Takst — global stylesheet (Tailwind v4 compatible)
+
+  - Uses Tailwind v4 entry points via @import
+  - Avoids mixing v3 `@tailwind` rules with v4 imports
+  - Keeps a plain-CSS approach for shared tokens and small components
+  - Minimal use of framework-specific directives so it stays robust
+*/
+
+/* Design tokens */
+:root {
+    --color-primary: #0f3b66; /* mørk blå aksent */
+    --color-primary-600: #0d3358;
+    --color-accent: #e4a11b; /* valgfri sekundær aksent */
+    --neutral-bg: #f3f4f6; /* lys grå bakgrunn */
+    --surface: #ffffff;
+    --text-default: #0f172a;
+    --text-muted: #475569;
+    --radius-md: 0.5rem;
+    --shadow-sm: 0 1px 2px rgba(15, 59, 102, 0.06);
+    --shadow-soft: 0 6px 18px rgba(15, 59, 102, 0.08);
+    --site-max: 1100px;
+}
+
+/* -------------------------
+   Base / Global element styles
+   ------------------------- */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--neutral-bg);
+    color: var(--text-default);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        "Noto Sans";
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Make images responsive and avoid inline gaps */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Link default */
+a {
+    color: var(--color-primary);
+    text-underline-offset: 3px;
+}
+
+/* Container utility for consistent horizontal padding & max width */
+.container {
+    max-width: var(--site-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text-default);
+    letter-spacing: -0.01em;
+    margin-top: 0;
+}
+
+/* -------------------------
+   Buttons and controls (CSS-only)
+   ------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    padding: 0.5rem 1rem;
+    transition:
+        background-color 0.12s ease,
+        color 0.12s ease,
+        box-shadow 0.12s ease;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-600);
+}
+
+.btn-primary:focus {
+    outline: 3px solid rgba(15, 59, 102, 0.12);
+    outline-offset: 3px;
+}
+
+.btn-ghost {
+    background: transparent;
+    color: inherit;
+    border: 1px solid rgba(15, 59, 102, 0.06);
+}
+
+/* -------------------------
+   Cards, badges and small components
+   ------------------------- */
+.card {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    background: rgba(15, 59, 102, 0.06);
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+/* -------------------------
+   Form primitives (lightweight)
+   ------------------------- */
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    background: var(--surface);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    color: var(--text-default);
+    box-sizing: border-box;
+}
+
+.form-textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(15, 59, 102, 0.06);
+    border-color: var(--color-primary-600);
+}
+
+/* -------------------------
+   Small utilities (used by layout)
+   ------------------------- */
+.bg-neutralBg {
+    background-color: var(--neutral-bg) !important;
+}
+.text-primary {
+    color: var(--color-primary) !important;
+}
+.bg-primary {
+    background-color: var(--color-primary) !important;
+}
+.shadow-soft {
+    box-shadow: var(--shadow-soft) !important;
+}
+
+/* Tailwind-like helper for hover used in components */
+.hover\:bg-primary\/90:hover {
+    background-color: rgba(15, 59, 102, 0.9) !important;
+}
+
+/* -------------------------
+   Accessibility helpers
+   ------------------------- */
+.skip-link {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-primary);
+    color: white;
+    z-index: 1000;
+    border-radius: 4px;
+}
+
+/* -------------------------
+   Content readability tweaks
+   ------------------------- */
+article :is(h2, h3) {
+    scroll-margin-top: 4rem;
+}
+
+p,
+ul,
+ol {
+    margin-bottom: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* End of file */

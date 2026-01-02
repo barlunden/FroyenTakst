@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+const title = 'Kontakt — Frøyen Takst';
+const description = 'Ta kontakt med Frøyen Takst for tilbud, spørsmål eller bestilling av taksering.';
+---
+<Layout {title} {description}>
+  <article class="max-w-3xl mx-auto">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-primary mb-2">Kontakt oss</h1>
+      <p class="text-slate-600">Ta kontakt for spørsmål, tilbud eller bestilling av taksering. Fyll ut skjemaet under eller bruk telefon/e-post.</p>
+    </header>
+
+    <section class="bg-white p-6 rounded-md shadow-soft">
+      <form id="contact-form" class="space-y-4" method="post" action="#" novalidate>
+        <!-- Hvis du ønsker Netlify Forms eller tilsvarende, kan du legge til data-netlify="true" og name="contact" -->
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div>
+          <label for="name" class="block text-sm font-medium text-slate-700">Navn</label>
+          <input id="name" name="name" type="text" required class="form-input mt-1" placeholder="Fullt navn" />
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label for="email" class="block text-sm font-medium text-slate-700">E-post</label>
+            <input id="email" name="email" type="email" required class="form-input mt-1" placeholder="din@mail.no" />
+          </div>
+
+          <div>
+            <label for="phone" class="block text-sm font-medium text-slate-700">Telefon</label>
+            <input id="phone" name="phone" type="tel" class="form-input mt-1" placeholder="+47 9X XX XX XX" />
+          </div>
+        </div>
+
+        <div>
+          <label for="service" class="block text-sm font-medium text-slate-700">Ønsket tjeneste</label>
+          <select id="service" name="service" class="form-select mt-1">
+            <option value="">Velg tjeneste…</option>
+            <option>Boligtakst / Verditakst</option>
+            <option>Tilstandsrapport</option>
+            <option>Skadetaksering</option>
+            <option>Næringstakst</option>
+            <option>Annet</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-slate-700">Melding</label>
+          <textarea id="message" name="message" rows="6" class="form-textarea mt-1" placeholder="Fortell kort om eiendommen og hva du ønsker hjelp med"></textarea>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <input id="consent" name="consent" type="checkbox" required class="mt-1" />
+          <label for="consent" class="text-sm text-slate-600">Jeg samtykker til at opplysningene sendes for å få et svar fra Frøyen Takst.</label>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button type="submit" class="btn btn-primary">Send melding</button>
+          <a href="tel:+47XXXXXXXX" class="text-sm text-slate-700 underline">eller ring +47 XX XX XX XX</a>
+        </div>
+
+        <div id="form-status" role="status" class="mt-2 text-sm text-slate-600 hidden"></div>
+      </form>
+    </section>
+
+    <section class="mt-8 grid md:grid-cols-2 gap-6">
+      <div class="bg-white p-6 rounded-md shadow-soft">
+        <h2 class="text-lg font-semibold mb-2">Kontaktinformasjon</h2>
+        <p class="text-sm text-slate-600">Tlf: <a class="underline" href="tel:+47XXXXXXXX">+47 XX XX XX XX</a><br/>
+        E-post: <a class="underline" href="mailto:post@froyentakst.no">post@froyentakst.no</a></p>
+        <p class="mt-4 text-sm text-slate-600">Adresse: (legg inn adresse her)</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-md shadow-soft">
+        <h2 class="text-lg font-semibold mb-2">Åpningstider</h2>
+        <p class="text-sm text-slate-600">Mandag–Fredag: 08:00–16:00<br/>Helg etter avtale</p>
+
+        <h3 class="mt-4 font-medium">Praktisk ved bestilling</h3>
+        <ul class="list-disc pl-5 text-sm text-slate-600 mt-2">
+          <li>Oppgi adresse og areal så langt du vet.</li>
+          <li>Fortell om eventuelle skader eller spesielle forhold.</li>
+          <li>Vi gir gjerne et estimat før vi kommer på befaring.</li>
+        </ul>
+      </div>
+    </section>
+  </article>
+
+  <script type="module">
+    // Enkel klient-side håndtering for demo / UX: viser statusmelding og "resets" skjema.
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Enkel validering
+        const name = form.querySelector('[name="name"]').value.trim();
+        const email = form.querySelector('[name="email"]').value.trim();
+        const consent = form.querySelector('[name="consent"]').checked;
+
+        if (!name || !email || !consent) {
+          status.textContent = 'Vennligst fyll ut navn, e-post og samtykke.';
+          status.classList.remove('hidden');
+          status.style.color = '#b45309'; // amber-700
+          return;
+        }
+
+        // Simulerer sending (her setter du inn faktisk API-endepunkt eller Netlify Forms)
+        status.textContent = 'Sender…';
+        status.classList.remove('hidden');
+        status.style.color = ''; // default
+
+        try {
+          // Demo: vent 700ms og vis suksessmelding
+          await new Promise((res) => setTimeout(res, 700));
+          status.textContent = 'Takk! Meldingen er sendt. Vi tar kontakt så snart som mulig.';
+          status.style.color = '#065f46'; // grønnaktig (success)
+          form.reset();
+        } catch (err) {
+          status.textContent = 'Noe gikk galt ved sending. Vennligst prøv igjen eller ring oss.';
+          status.style.color = '#b91c1c'; // red-700
+        }
+      });
+    }
+  </script>
+</Layout>

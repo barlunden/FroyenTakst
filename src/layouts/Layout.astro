@@ -1,0 +1,117 @@
+---
+import '../styles/global.css';
+const { title = 'Frøyen Takst', description = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+
+  <body class="min-h-screen bg-gray-50 text-slate-800 antialiased flex flex-col">
+    <!-- Header -->
+    <header class="bg-white/60 backdrop-blur-sm border-b">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="flex items-center gap-3">
+            <!-- Simple mark: modern, solid, trustworthy -->
+            <svg class="h-10 w-10 text-[#0f3b66]" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <rect width="48" height="48" rx="8" fill="currentColor" />
+              <path d="M14 32L24 18l10 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+
+            <div>
+              <div class="text-lg font-semibold tracking-tight">Frøyen Takst</div>
+              <div class="text-xs text-slate-500 -mt-0.5">Takst · Verdivurdering · Skade</div>
+            </div>
+          </a>
+
+          <!-- Desktop nav -->
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="/" class="text-slate-700 hover:text-[#0f3b66]">Hjem</a>
+            <a href="/om" class="text-slate-700 hover:text-[#0f3b66]">Om</a>
+            <a href="/tjenester" class="text-slate-700 hover:text-[#0f3b66]">Tjenester</a>
+            <a href="/referanser" class="text-slate-700 hover:text-[#0f3b66]">Referanser</a>
+            <a href="/kontakt" class="inline-flex items-center gap-2 px-3 py-2 bg-[#0f3b66] text-white rounded-md shadow-sm hover:bg-[#0d3358]">Kontakt</a>
+          </nav>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button id="menu-toggle" aria-label="Åpne meny" class="p-2 rounded-md border bg-white">
+              <svg class="h-5 w-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile nav (hidden by default) -->
+      <div id="mobile-menu" class="md:hidden hidden border-t bg-white">
+        <div class="px-4 py-4 space-y-2">
+          <a href="/" class="block py-2 text-slate-700 hover:text-[#0f3b66]">Hjem</a>
+          <a href="/om" class="block py-2 text-slate-700 hover:text-[#0f3b66]">Om</a>
+          <a href="/tjenester" class="block py-2 text-slate-700 hover:text-[#0f3b66]">Tjenester</a>
+          <a href="/referanser" class="block py-2 text-slate-700 hover:text-[#0f3b66]">Referanser</a>
+          <a href="/kontakt" class="block py-2 px-3 bg-[#0f3b66] text-white rounded-md w-max">Kontakt</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-12">
+        <slot />
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/60 border-t">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-8 text-slate-600">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <div class="font-semibold text-slate-800">Frøyen Takst</div>
+            <div class="mt-2 text-sm">Profesjonell taksering med vekt på kvalitet, dokumentasjon og kundetillit.</div>
+          </div>
+
+          <div>
+            <div class="font-medium text-slate-800">Tjenester</div>
+            <ul class="mt-2 text-sm space-y-1">
+              <li>Boligtakst & verditakst</li>
+              <li>Tilstandsrapporter</li>
+              <li>Næringstakst</li>
+              <li>Skadetaksering</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="font-medium text-slate-800">Kontakt</div>
+            <div class="mt-2 text-sm">
+              Tlf: <a class="underline" href="tel:+47XXXXXXXX">+47 XX XX XX XX</a><br />
+              E-post: <a class="underline" href="mailto:post@froyentakst.no">post@froyentakst.no</a><br />
+              Org.nr: XXXXXXXXX
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 text-center text-xs text-slate-500">© {new Date().getFullYear()} Frøyen Takst — Alle rettigheter forbeholdes</div>
+      </div>
+    </footer>
+
+    <!-- Small inline script for toggling mobile menu -->
+    <script type="module">
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      }
+    </script>
+  </body>
+</html>
