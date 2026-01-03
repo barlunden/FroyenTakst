@@ -39,7 +39,7 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
         class="min-h-screen bg-gray-50 text-slate-800 antialiased flex flex-col"
     >
         <!-- Header -->
-        <header class="bg-white/60 backdrop-blur-sm border-b">
+        <header class="bg-white/60 backdrop-blur-sm border-b sticky top-0 z-50">
             <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-28">
                     <a href="/" class="flex items-center gap-3">
@@ -62,13 +62,56 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
                         >
                         <a
                             href="/om"
-                            class="text-slate-700 hover:text-[#0f3b66]">Om oss</a
-                        >
-                        <a
-                            href="/tjenester"
                             class="text-slate-700 hover:text-[#0f3b66]"
-                            >Tjenester</a
+                            >Om oss</a
                         >
+
+                        <!-- Tjenester Dropdown -->
+                        <div class="relative group">
+                            <a
+                                href="/tjenester"
+                                class="text-slate-700 hover:text-[#0f3b66] flex items-center gap-1"
+                            >
+                                Tjenester
+                                <svg
+                                    class="h-4 w-4 transform transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <div
+                                class="absolute hidden group-hover:block bg-white shadow-lg rounded-md top-full left-0 py-2 w-60 border z-10"
+                            >
+                                <a
+                                    href="/tjenester/tilstandsrapport"
+                                    class="block px-4 py-2 text-sm text-slate-700 hover:bg-gray-100"
+                                    >Tilstandsrapport</a
+                                >
+                                <a
+                                    href="/tjenester/reklamasjon-skadetakst"
+                                    class="block px-4 py-2 text-sm text-slate-700 hover:bg-gray-100"
+                                    >Reklamasjon og Skadetakst</a
+                                >
+                                <a
+                                    href="/tjenester/verdi-lanetakst"
+                                    class="block px-4 py-2 text-sm text-slate-700 hover:bg-gray-100"
+                                    >Verdi- og Lånetakst</a
+                                >
+                                <a
+                                    href="/tjenester/forenklet-lanetakst"
+                                    class="block px-4 py-2 text-sm text-slate-700 hover:bg-gray-100"
+                                    >Forenklet Lånetakst</a
+                                >
+                            </div>
+                        </div>
+
                         <a
                             href="/prisliste"
                             class="text-slate-700 hover:text-[#0f3b66]"
@@ -124,11 +167,35 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
                         class="block py-2 text-slate-700 hover:text-[#0f3b66]"
                         >Om</a
                     >
-                    <a
-                        href="/tjenester"
-                        class="block py-2 text-slate-700 hover:text-[#0f3b66]"
-                        >Tjenester</a
-                    >
+                    <div>
+                        <a
+                            href="/tjenester"
+                            class="block py-2 font-semibold text-slate-700"
+                            >Tjenester</a
+                        >
+                        <div class="pl-4 border-l-2 border-slate-200">
+                            <a
+                                href="/tjenester/tilstandsrapport"
+                                class="block py-2 text-slate-600 hover:text-[#0f3b66]"
+                                >Tilstandsrapport</a
+                            >
+                            <a
+                                href="/tjenester/reklamasjon-skadetakst"
+                                class="block py-2 text-slate-600 hover:text-[#0f3b66]"
+                                >Reklamasjon og Skadetakst</a
+                            >
+                            <a
+                                href="/tjenester/verdi-lanetakst"
+                                class="block py-2 text-slate-600 hover:text-[#0f3b66]"
+                                >Verdi- og Lånetakst</a
+                            >
+                            <a
+                                href="/tjenester/forenklet-lanetakst"
+                                class="block py-2 text-slate-600 hover:text-[#0f3b66]"
+                                >Forenklet Lånetakst</a
+                            >
+                        </div>
+                    </div>
                     <a
                         href="/prisliste"
                         class="block py-2 text-slate-700 hover:text-[#0f3b66]"
@@ -174,10 +241,29 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
                     <div>
                         <div class="font-medium text-slate-800">Tjenester</div>
                         <ul class="mt-2 text-sm space-y-1">
-                            <li>Boligtakst & verditakst</li>
-                            <li>Tilstandsrapporter</li>
-                            <li>Næringstakst</li>
-                            <li>Skadetaksering</li>
+                            <li>
+                                <a
+                                    href="/tjenester/tilstandsrapport"
+                                    class="hover:underline">Tilstandsrapport</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/tjenester/reklamasjon-skadetakst"
+                                    class="hover:underline"
+                                    >Reklamasjon og Skadetakst</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/tjenester/verdi-lanetakst"
+                                    class="hover:underline"
+                                    >Verdi- og Lånetakst</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/tjenester/forenklet-lanetakst"
+                                    class="hover:underline"
+                                    >Forenklet Lånetakst</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -201,7 +287,20 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
                     © {new Date().getFullYear()} Frøyen Takst — Alle rettigheter forbeholdes
                 </div>
                 <div class="mt-2 text-center text-xs text-slate-400">
-                    Forsidebilde: Photo by <a href="https://unsplash.com/@michaelfousert?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class="underline hover:text-slate-500">Michael Fousert</a> on <a href="https://unsplash.com/photos/panorama-city-view-lE5-z4nTCTQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class="underline hover:text-slate-500">Unsplash</a>
+                    Forsidebilde: Photo by <a
+                        href="https://unsplash.com/@michaelfousert?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                        class="underline hover:text-slate-500"
+                        >Michael Fousert</a
+                    > on <a
+                        href="https://unsplash.com/photos/panorama-city-view-lE5-z4nTCTQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                        class="underline hover:text-slate-500">Unsplash</a
+                    >
+                </div>
+                <div class="mt-2 text-center text-xs text-slate-400">
+                    Nettsider utviklet av <a
+                        href="https://cominoweb.no"
+                        class="underline hover:text-slate-500">Comino Web AS</a
+                    >
                 </div>
             </div>
         </footer>

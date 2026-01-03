@@ -1,0 +1,83 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import verdiBilde from "/public/images/laneTakst.jpg";
+
+const title = "Verdi- og Lånetakst — Frøyen Takst";
+const description =
+    "Trenger du en verdi- og lånetakst for refinansiering, arv eller skilsmisse? Frøyen Takst gir en nøyaktig verdivurdering av din eiendom.";
+---
+
+<Layout {title} {description}>
+    <article class="max-w-4xl mx-auto prose lg:prose-lg">
+        <header class="mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-primary">
+                Verdi- og Lånetakst
+            </h1>
+        </header>
+
+        <figure class="mb-8">
+            <Image
+                src={verdiBilde}
+                alt="Konseptbilde for verdivurdering med en liten tre-modell av et hus, en kalkulator, penger og et forstørrelsesglass."
+                class="rounded-md shadow-lg w-full"
+            />
+            <figcaption class="text-center text-sm text-slate-500 mt-2">
+                En nøyaktig verdivurdering gir et solid grunnlag for dine
+                finansielle beslutninger.
+            </figcaption>
+        </figure>
+
+        <section>
+            <p>
+                Når vi utfører en verdi- og lånetakst, anslår vi verdien av både
+                bygningsmasse og tomt. Faktorer som bygningens generelle stand,
+                eventuelle feil eller mangler, solforhold, utsikt og beliggenhet
+                spiller alle inn i vurderingen.
+            </p>
+            <p>
+                Vi anbefaler normalt verdi- og lånetakst når en bolig skal
+                refinansieres, eller ved oppgjør i forbindelse med arv eller
+                skilsmisse. Verdi- og lånetakst kan også benyttes ved salg av
+                bolig, men vi anbefaler da en grundigere rapport, som for
+                eksempel en tilstandsrapport.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-xl md:text-2xl font-bold text-primary">Rapportens innhold</h2>
+            <ul class="list-disc pl-5">
+                <li>Beskrivelse av eiendommen</li>
+                <li>Generelle opplysninger</li>
+                <li>Reguleringsmessige forhold</li>
+                <li>Eierforhold</li>
+                <li>Tekniske beskrivelser og verdiberegninger</li>
+                <li>Beskrivelse av areal og romdisponering</li>
+                <li>Kommentarer til grunnboken</li>
+                <li>Markedsanalyse</li>
+                <li>Verdikonklusjon</li>
+            </ul>
+            <p>
+                Selgerens egenerklæring inngår også som en del av verdi- og
+                lånetaksten.
+            </p>
+            <p>
+                Priser for våre tjenester, samt timepris og tillegg, finner du
+                på vår <a href="/prisliste">prisliste</a>.
+            </p>
+        </section>
+
+        <aside
+            class="mt-12 p-6 bg-white rounded-md shadow-soft not-prose"
+        >
+            <h3 class="text-lg font-semibold mb-2">
+                Behøver du en verdi- eller lånetakst?
+            </h3>
+            <p class="text-sm text-slate-600 mb-4">
+                Kontakt oss for å avtale en befaring. Vi sikrer en rask og
+                profesjonell verdivurdering av din eiendom.
+            </p>
+            <a href="/kontakt" class="btn btn-primary">Få en verdivurdering</a>
+        </aside>
+    </article>
+</Layout>

@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import skadeBilde from "/public/images/skadeTakst.jpg";
+
+const title = "Reklamasjon og Skadetakst — Frøyen Takst";
+const description =
+    "Trenger du en uavhengig vurdering ved reklamasjon eller skade? Frøyen Takst utfører skadeskjønn som sikrer et profesjonelt grunnlag for erstatningssaker.";
+---
+
+<Layout {title} {description}>
+    <article class="max-w-4xl mx-auto prose lg:prose-lg">
+        <header class="mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-primary">
+                Reklamasjon og Skadetakst
+            </h1>
+        </header>
+
+        <figure class="mb-8">
+            <Image
+                src={skadeBilde}
+                alt="Interiør av et rom med tydelige skader på tak og gulv, som illustrerer behovet for skadetaksering."
+                class="rounded-md shadow-lg w-full"
+            />
+            <figcaption class="text-center text-sm text-slate-500 mt-2">
+                En objektiv skadetakst er avgjørende for en ryddig prosess.
+            </figcaption>
+        </figure>
+
+        <section>
+            <p>
+                Skadeskjønn sikrer et profesjonelt og grundig grunnlag for
+                eventuelle erstatningssaker dersom eiendommen din skulle få
+                skader. En uavhengig og objektiv rapport fra en
+                bygningssakkyndig er ofte avgjørende for å fastslå årsak, omfang
+                og utbedringskostnader.
+            </p>
+            <p>
+                Dette gjelder enten det er en tvist etter et boligkjøp
+                (reklamasjon) eller en skade som skal dekkes av forsikringen.
+                Vår rolle er å gi en nøytral vurdering som alle parter kan stole
+                på.
+            </p>
+            <p>
+                Priser for våre tjenester, inkludert timepris og eventuelle
+                tillegg, finner du på vår <a href="/prisliste">prisliste</a>.
+            </p>
+        </section>
+
+        <aside
+            class="mt-12 p-6 bg-white rounded-md shadow-soft not-prose"
+        >
+            <h3 class="text-lg font-semibold mb-2">
+                Har du en skade eller reklamasjonssak?
+            </h3>
+            <p class="text-sm text-slate-600 mb-4">
+                Ta kontakt for en uforpliktende samtale. Vi hjelper deg med å
+                vurdere situasjonen og avklarer hvordan vi best kan bistå.
+            </p>
+            <a href="/kontakt" class="btn btn-primary">Kontakt oss for hjelp</a>
+        </aside>
+    </article>
+</Layout>
