@@ -1,0 +1,259 @@
+---
+import Layout from "../layouts/Layout.astro";
+const title = "Prisliste — Frøyen Takst";
+const description =
+    "Prisliste for tjenester fra Frøyen Takst: verdi- og lånetakst, forenklet lånetakst, og reklamasjon/skadetakst i Bergen og omegn.";
+---
+
+<Layout {title} {description}>
+    <article class="max-w-6xl mx-auto">
+        <header class="mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-primary">
+                Prisliste
+            </h1>
+            <p class="mt-3 text-slate-600">
+                Her er en oversikt over våre priser. Alle priser er inkludert
+                mva.
+            </p>
+        </header>
+
+        <section class="mb-12">
+            <div class="overflow-x-auto">
+                <table class="min-w-full table-auto bg-white border border-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th
+                                scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                                Priskategori
+                            </th>
+                            <th
+                                scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                                Pris (kr)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td
+                                colspan="2"
+                                class="px-6 py-2 text-md font-bold text-gray-900 col-span-2"
+                            >
+                                LEILIGHET
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 font-bold">
+                                    Leilighet
+                                </div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">7 900,-</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 font-bold">
+                                    Leilighet i loftsetasje <span class="italic"
+                                        >eller</span
+                                    > i u.etg/kjeller
+                                </div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">8 500,-</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 italic font-bold">
+                                    Leilighet i flermannsbolig (2-6 enheter)*
+                                </div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">
+                                    11 000,-
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="px-6 py-2">
+                                <div class="text-xs text-gray-900">
+                                    *Flere bygningsdeler må kontrolleres dersom
+                                    det er få enheter i samme bygg. Dette i
+                                    motsetning til leiligheter i større blokker
+                                    hvor ytre bygningsdeler normalt ikke trenger
+                                    vurdering dersom dette inngår i eks.
+                                    borettslag sitt ansvarsområde.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="h-0.5 bg-slate-200"></td>
+                        </tr>
+                        <tr>
+                            <td
+                                colspan="2"
+                                class="px-6 py-2 text-md font-bold text-gray-900"
+                            >
+                                BOLIG (Enebolig, rekkehus etc.)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 font-bold">
+                                    Enebolig/fritidsbolig
+                                </div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">
+                                    16 500,-
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 font-bold">
+                                    Rekkehus/tomannsbolig
+                                </div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">
+                                    15 000,-
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 italic">
+                                    ** Tillegg pr. ekstra
+                                    boenhet/utleiedel/hybel
+                                </div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">2 000,-</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 italic">
+                                    *** Tillegg for boliger over 250m2
+                                </div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">
+                                    Etter avtale
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="h-0.5 bg-slate-200"></td>
+                        </tr>
+                        <tr>
+                            <td
+                                colspan="2"
+                                class="px-6 py-2 text-md font-bold text-gray-900 col-span-2"
+                            >
+                                TILLEGG UTOVER KRAV I FORSKRIFT (må bestilles)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">
+                                    Vurdering av tilleggsbygg <span
+                                        class="italic"
+                                        >(garasje, uthus, naust etc)</span
+                                    >
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">2 000,- pr.stk</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="mb-12 prose max-w-none">
+            <div class="p-4 bg-blue-50 border border-blue-200 rounded-md">
+                <p>
+                    <strong>Bolig:</strong> enebolig, fritidsbolig, rekkehus, halvpart-2-mannsbolig
+                    og ¼-part 4-mannsbolig.
+                </p>
+                <p>
+                    <strong>Leilighet:</strong> vurdering av boenhet uten fellesdeler
+                    utenfor leilighetens bruksareal (BRA).
+                </p>
+                <p class="text-sm">
+                    *Prisen gjelder i utgangspunktet boliger opp til ca 250-300
+                    m². Be om pris ved boliger større enn 300 m² eller ved
+                    boliger av mer spesiell karakter, type boligbygg med flere
+                    leiligheter, med næringsdel etc.
+                </p>
+            </div>
+        </section>
+
+        <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
+            <!-- Reklamasjon/Skadetakst -->
+            <div class="card">
+                <h2 class="text-xl font-semibold text-primary">
+                    Reklamasjon/Skadetakst
+                </h2>
+                <p class="mt-2 text-slate-600">Basert på medgått tid.</p>
+                <div class="mt-4 text-2xl font-bold">
+                    kr 1 800,- <span class="text-base font-normal">/ time</span>
+                </div>
+                <p class="text-sm text-slate-500">inkl. mva</p>
+            </div>
+
+            <!-- Verdi-/Lånetakst -->
+            <div class="card">
+                <h2 class="text-xl font-semibold text-primary">
+                    Verdi-/Lånetakst
+                </h2>
+                <div class="mt-4 space-y-4">
+                    <div>
+                        <p class="text-slate-600">Leilighet</p>
+                        <div class="text-2xl font-bold">kr 5 600,-</div>
+                        <p class="text-sm text-slate-500">inkl. mva</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="text-slate-600">Enebolig</p>
+                        <div class="text-2xl font-bold">kr 7 000,-</div>
+                        <p class="text-sm text-slate-500">inkl. mva</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forenklet lånetakst -->
+            <div class="card">
+                <h2 class="text-xl font-semibold text-primary">
+                    Forenklet lånetakst
+                </h2>
+                <div class="mt-4">
+                    <p class="text-slate-600">Leilighet</p>
+                    <div class="text-2xl font-bold">kr 4 500,-</div>
+                    <p class="text-sm text-slate-500">inkl. mva</p>
+                </div>
+            </div>
+        </section>
+
+        <aside class="p-6 bg-white rounded-md shadow-soft">
+            <h3 class="text-lg font-semibold mb-2">
+                Finner du ikke det du leter etter eller har en spesiell eiendom?
+            </h3>
+            <p class="text-sm text-slate-600 mb-4">
+                Ta kontakt med oss — oppgi gjerne adresse og hvilken type
+                tjeneste du er ute etter, så kommer vi tilbake med et
+                uforpliktende tilbud.
+            </p>
+            <a href="/kontakt" class="btn btn-primary">Kontakt oss</a>
+        </aside>
+    </article>
+</Layout>
