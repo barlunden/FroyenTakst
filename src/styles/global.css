@@ -238,4 +238,28 @@ ol {
     color: var(--text-muted);
 }
 
+/* ... eksisterende stiler ... */
+
+/* ... eksisterende stiler ... */
+
+.btn-ghost-white {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.btn-ghost-white:hover {
+    background-color: #fff;
+    color: #1e293b; /* tilsvarer text-slate-800 */
+}
+
+.card-transparent {
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 1rem; /* p-4 */
+}
+
+
 /* End of file */

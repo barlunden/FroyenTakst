@@ -6,239 +6,68 @@ const description =
 ---
 
 <Layout {title} {description}>
-    <article class="max-w-6xl mx-auto">
-        <header class="mb-8">
+    <article class="max-w-4xl mx-auto">
+        <header class="mb-8 text-center">
             <h1 class="text-3xl md:text-4xl font-bold text-primary">
                 Våre tjenester
             </h1>
-            <p class="mt-3 text-slate-600">
-                Frøyen Takst tilbyr faglig solide takseringer og rapporter for
-                privat- og bedriftskunder. Vi legger vekt på nøyaktighet,
-                dokumentasjon og tydelige anbefalinger.
+            <p class="mt-3 text-slate-600 max-w-2xl mx-auto">
+                Vi tilbyr en rekke takseringstjenester for å gi deg trygghet ved bolighandel, skadesaker eller finansiering. Nedenfor finner du en oversikt over våre mest brukte tjenester.
             </p>
         </header>
 
-        <section class="grid gap-6 md:grid-cols-2 mb-10">
-            <div class="card">
-                <div class="flex items-start gap-4">
-                    <div
-                        class="h-12 w-12 flex items-center justify-center rounded-md bg-[#0f3b66]/10 text-primary"
-                    >
-                        <svg
-                            class="h-6 w-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            aria-hidden
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.6"
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"
-                            ></path>
-                        </svg>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-semibold">Boligtakst</h2>
-                        <p class="mt-2 text-sm text-slate-600">
-                            Taksering ved kjøp eller salg, samt ved
-                            refinansiering. Vi leverer tilstandsbaserte
-                            vurderinger med klare konklusjoner og
-                            bildedokumentasjon.
-                        </p>
-                        <ul
-                            class="mt-3 list-disc pl-5 text-sm text-slate-600 space-y-1"
-                        >
-                            <li>Markedsorientert verdivurdering</li>
-                            <li>Tilstandsoversikt og anbefalinger</li>
-                            <li>Rask levering ved behov</li>
-                        </ul>
-                    </div>
+        <section class="space-y-6 mb-10">
+            <!-- Tilstandsrapport -->
+            <div class="card p-6 flex flex-col sm:flex-row items-start gap-6">
+                <div class="flex-1">
+                    <h2 class="text-xl font-semibold">Tilstandsrapport ved salg av bolig</h2>
+                    <p class="mt-2 text-sm text-slate-600">
+                        Rapporten brukes for å kontrollere bygningsdeler der det kan oppstå konflikt mellom kjøper og selger.
+                    </p>
                 </div>
+                <a href="/tjenester/tilstandsrapport" class="btn btn-outline mt-2 sm:mt-0">Les mer</a>
             </div>
 
-            <div class="card">
-                <div class="flex items-start gap-4">
-                    <div
-                        class="h-12 w-12 flex items-center justify-center rounded-md bg-[#0f3b66]/10 text-primary"
-                    >
-                        <svg
-                            class="h-6 w-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            aria-hidden
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.6"
-                                d="M12 8c-3.866 0-7 1.79-7 4v3h14v-3c0-2.21-3.134-4-7-4z"
-                            ></path>
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.6"
-                                d="M12 8V5"></path>
-                        </svg>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-semibold">Verditakst</h2>
-                        <p class="mt-2 text-sm text-slate-600">
-                            Uavhengig vurdering av markedsverdi for salg, arv
-                            eller forsikring. Vi vurderer både teknisk tilstand
-                            og lokal markedsdynamikk.
-                        </p>
-                        <div class="mt-3">
-                            <span class="badge">Markedskunnskap</span>
-                        </div>
-                    </div>
+            <!-- Reklamasjon/Skadetakst -->
+            <div class="card p-6 flex flex-col sm:flex-row items-start gap-6">
+                <div class="flex-1">
+                    <h2 class="text-xl font-semibold">Reklamasjon/Skadetakst</h2>
+                    <p class="mt-2 text-sm text-slate-600">
+                        Skadeskjønn sikrer et profesjonelt og grundig grunnlag for eventuelle erstatningssaker.
+                    </p>
                 </div>
+                <a href="/tjenester/reklamasjon-skadetakst" class="btn btn-outline mt-2 sm:mt-0">Les mer</a>
             </div>
 
-            <div class="card">
-                <div class="flex items-start gap-4">
-                    <div
-                        class="h-12 w-12 flex items-center justify-center rounded-md bg-[#0f3b66]/10 text-primary"
-                    >
-                        <svg
-                            class="h-6 w-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            aria-hidden
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.6"
-                                d="M3 7h18M6 7v13a1 1 0 001 1h10a1 1 0 001-1V7"
-                            ></path>
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.6"
-                                d="M9 7V4a3 3 0 016 0v3"></path>
-                        </svg>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-semibold">
-                            Tilstandsrapporter
-                        </h2>
-                        <p class="mt-2 text-sm text-slate-600">
-                            Detaljerte rapporter med funn, vurdering av avvik og
-                            prioriterte tiltak. Egnet for både kjøpere og
-                            selgere som ønsker et konkret beslutningsgrunnlag.
-                        </p>
-                        <p class="mt-3 text-sm text-slate-600">
-                            Rapportene inneholder bilder, vurdering av
-                            vesentlige feil og anbefalinger for oppfølging.
-                        </p>
-                    </div>
+            <!-- Verdi-/lånetakst -->
+            <div class="card p-6 flex flex-col sm:flex-row items-start gap-6">
+                <div class="flex-1">
+                    <h2 class="text-xl font-semibold">Verdi-/lånetakst</h2>
+                    <p class="mt-2 text-sm text-slate-600">
+                        Når vi utfører verdi- og lånetakst anslår vi verdien av både bygningsmasse og tomt.
+                    </p>
                 </div>
+                <a href="/tjenester/verdi-laanetakst" class="btn btn-outline mt-2 sm:mt-0">Les mer</a>
             </div>
 
-            <div class="card">
-                <div class="flex items-start gap-4">
-                    <div
-                        class="h-12 w-12 flex items-center justify-center rounded-md bg-[#0f3b66]/10 text-primary"
-                    >
-                        <svg
-                            class="h-6 w-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            aria-hidden
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.6"
-                                d="M3 7h18v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
-                            ></path>
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.6"
-                                d="M7 7V5a5 5 0 0110 0v2"></path>
-                        </svg>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-semibold">Næringstakst</h2>
-                        <p class="mt-2 text-sm text-slate-600">
-                            Taksering av næringseiendom, produksjonslokaler og
-                            utviklingsprosjekter. Vi leverer verdivurderinger og
-                            tilstandsoversikter tilpasset næringsbehov.
-                        </p>
-                        <p class="mt-3 text-sm text-slate-600">
-                            Egnet ved salg, refinansiering eller intern
-                            vurdering av eiendomsporteføljer.
-                        </p>
-                    </div>
+            <!-- Forenklet lånetakst -->
+            <div class="card p-6 flex flex-col sm:flex-row items-start gap-6">
+                <div class="flex-1">
+                    <h2 class="text-xl font-semibold">Forenklet lånetakst</h2>
+                    <p class="mt-2 text-sm text-slate-600">
+                        En forenklet lånetakst er en enklere utgave av verdi- og lånetaksten.
+                    </p>
                 </div>
-            </div>
-
-            <div class="card md:col-span-2">
-                <div class="flex items-start gap-4">
-                    <div
-                        class="h-12 w-12 flex items-center justify-center rounded-md bg-[#0f3b66]/10 text-primary"
-                    >
-                        <svg
-                            class="h-6 w-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            aria-hidden
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.6"
-                                d="M12 8v4l3 3"></path>
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.6"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-semibold">
-                            Skadetaksering og forsikringsvurdering
-                        </h2>
-                        <p class="mt-2 text-sm text-slate-600">
-                            Ved skader eller ulykker gjør vi grundige
-                            takseringer som grunnlag for forsikringsoppgjør. Vi
-                            dokumenterer skader og vurderer reparasjonsbehov og
-                            kostnadsanslag.
-                        </p>
-                        <p class="mt-3 text-sm text-slate-600">
-                            Vi samarbeider med forsikringsselskaper og
-                            entreprenører for å sikre ryddige prosesser og gode
-                            løsninger.
-                        </p>
-                    </div>
-                </div>
+                <a href="/tjenester/forenklet-laanetakst" class="btn btn-outline mt-2 sm:mt-0">Les mer</a>
             </div>
         </section>
 
-        <aside class="p-6 bg-white rounded-md shadow-soft">
-            <h3 class="text-lg font-semibold mb-2">Få et tilbud</h3>
+        <aside class="p-6 bg-white rounded-md shadow-soft text-center">
+            <h3 class="text-lg font-semibold mb-2">Finner du ikke det du leter etter?</h3>
             <p class="text-sm text-slate-600 mb-4">
-                Vi gir gjerne et uforpliktende tilbud basert på opplysninger om
-                eiendommen. Oppgi adresse, areal og ønsket tjeneste så kontakter
-                vi deg.
+                Vi utfører også andre typer taksering og vurderinger. Ta kontakt for en uforpliktende prat om ditt behov.
             </p>
-            <div class="flex flex-wrap gap-3">
-                <a href="/kontakt" class="btn btn-primary">Kontakt oss</a>
-                <a href="/kontakt" class="btn btn-ghost">Be om tilbud</a>
-            </div>
+            <a href="/kontakt" class="btn btn-primary">Kontakt oss</a>
         </aside>
     </article>
 </Layout>
