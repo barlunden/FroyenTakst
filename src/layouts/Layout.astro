@@ -42,7 +42,10 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
         <header class="bg-white/60 backdrop-blur-sm border-b sticky top-0 z-50">
             <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-28">
-                    <a href="/" class="flex items-center gap-3">
+                    <a
+                        href="/"
+                        class="flex items-center gap-3 rounded-md shadow-slate-500/50 hover:scale-101 transition-all shadow-lg"
+                    >
                         <!-- Logo image -->
                         <span
                             class="inline-flex items-center justify-center bg-[#0f3b66] rounded-md p-2"
@@ -244,25 +247,29 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
                             <li>
                                 <a
                                     href="/tjenester/tilstandsrapport"
-                                    class="hover:underline">Tilstandsrapport</a>
+                                    class="hover:underline">Tilstandsrapport</a
+                                >
                             </li>
                             <li>
                                 <a
                                     href="/tjenester/reklamasjon-skadetakst"
                                     class="hover:underline"
-                                    >Reklamasjon og Skadetakst</a>
+                                    >Reklamasjon og Skadetakst</a
+                                >
                             </li>
                             <li>
                                 <a
                                     href="/tjenester/verdi-lanetakst"
                                     class="hover:underline"
-                                    >Verdi- og Lånetakst</a>
+                                    >Verdi- og Lånetakst</a
+                                >
                             </li>
                             <li>
                                 <a
                                     href="/tjenester/forenklet-lanetakst"
                                     class="hover:underline"
-                                    >Forenklet Lånetakst</a>
+                                    >Forenklet Lånetakst</a
+                                >
                             </li>
                         </ul>
                     </div>
@@ -282,8 +289,9 @@ const { title = "Frøyen Takst", description = "" } = Astro.props;
                         </div>
                     </div>
                 </div>
-
-                <div class="mt-6 text-center text-xs text-slate-500">
+            </div>
+            <div class="bg-slate-100 py-1">
+                <div class="mt-2 text-center text-xs text-slate-500">
                     © {new Date().getFullYear()} Frøyen Takst — Alle rettigheter forbeholdes
                 </div>
                 <div class="mt-2 text-center text-xs text-slate-400">
