@@ -1,198 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import SellingPoints from "../components/SellingPoints.astro";
+import OmOss from "../components/OmOss.astro";
+import Prat from "../components/Prat.astro";
 const title = "Frøyen Takst — Hjem";
 const description =
-    "Takstmann i Bergen — Frøyen Takst leverer tilstandsrapporter, verdivurderinger og skadetaksering med over 20 års byggfaglig erfaring.";
+  "Takstmann i Bergen — Frøyen Takst leverer tilstandsrapporter, verdivurderinger og skadetaksering med over 20 års byggfaglig erfaring.";
 ---
 
 <Layout {title} {description}>
-    <header
-        class="relative bg-cover bg-center rounded-md shadow-soft py-6 md:p-36 mb-8 text-white overflow-hidden"
-        style="background-image: url('/images/bergenWaterfront.jpg');"
-    >
-        <div
-            class="absolute inset-0 bg-slate-500/20"
-            aria-hidden="true"
-        ></div>
-        <div class="relative max-w-4xl mx-auto text-center">
-            <h1
-                class="text-4xl md:text-5xl font-bold text-slate-200! leading-tight"
-            >
-                Frøyen Takst
-            </h1>
-            <p class="mt-4 text-md md:text-lg text-slate-200!">
-                Profesjonell taksering — trygghet, faglig tyngde og lokal
-                markedskunnskap.
-            </p>
-    
-            <div
-                class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3"
-            >
-                <a href="/kontakt" class="btn btn-primary">Be om tilbud</a>
-                <a href="/tjenester" class="btn btn-ghost-white backdrop-blur-sm"
-                    >Les om tjenestene våre</a
-                >
-            </div>
-    
-            
-        </div>
-    </header>
+  <!-- Header -->
+  <Header />
 
-    <section class="max-w-6xl mx-auto mb-10">
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="card text-center p-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="mx-auto mb-2" viewBox="0 0 16 16">
-                  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
-                  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
-                </svg>
-                <div class="text-md font-semibold text-slate-700">
-                    Rask levering
-                </div>
-                <div class="mt-2 text-sm text-slate-600">
-                    Levering 1-3 dager etter kontraktinngåelse.
-                </div>
-            </div>
+  <!-- Selling points -->
+  <SellingPoints />
+  
+  <!-- Om oss -->
+  <OmOss />
 
-            <div class="card text-center p-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="mx-auto mb-2" viewBox="0 0 16 16">
-                  <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
-                </svg>
-                <div class="text-md font-semibold text-slate-700">
-                    Fleksibel
-                </div>
-                <div class="mt-2 text-sm text-slate-600">
-                    Vi kan komme på befaring etter vanlig arbiedstid.
-                </div>
-            </div>
-
-            <div class="card text-center p-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="mx-auto mb-2" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                  <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                </svg>
-                <div class="text-md font-semibold text-slate-700">
-                    Lang erfaring
-                </div>
-                <div class="mt-2 text-sm text-slate-600">
-                    Over 20 års erfaring i byggebransjen.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto mb-10">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-                <h2 class="text-2xl font-semibold text-primary mb-3">
-                    Våre mest populære tjenester
-                </h2>
-                <p class="text-slate-600 mb-4">
-                    Vi dekker et bredt spekter av oppdrag — fra boligtakst og
-                    verdivurdering til næringstakst og skadetaksering.
-                </p>
-
-                <ul class="list-inside list-disc space-y-2 text-slate-600">
-                    <li>
-                        <strong>Boligtakst & verditakst</strong> — for kjøp, salg
-                        og finansiering.
-                    </li>
-                    <li>
-                        <strong>Tilstandsrapporter</strong> — dokumentasjon ved kjøp
-                        og rehabilitering.
-                    </li>
-                    <li>
-                        <strong>Skadetaksering</strong> — rapport for forsikring og
-                        reparasjon.
-                    </li>
-                    <li>
-                        <strong>Næringstakst</strong> — verdivurdering for selskaper
-                        og regnskap.
-                    </li>
-                </ul>
-
-                <div class="mt-6">
-                    <a href="/tjenester" class="btn btn-primary"
-                        >Se alle tjenester</a
-                    >
-                </div>
-            </div>
-
-            <div>
-                <div class="card p-6">
-                    <h3 class="text-lg font-semibold mb-2">
-                        Hvordan vi jobber
-                    </h3>
-                    <p class="text-slate-600 mb-4">
-                        Ved befaring kombinerer vi visuell inspeksjon,
-                        fotografisk dokumentasjon og faglig vurdering for å
-                        utarbeide en forståelig og handlingsorientert rapport.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 border rounded">
-                            <div class="font-medium">Dokumentasjon</div>
-                            <div class="text-sm text-slate-600 mt-1">
-                                Bilder og forklarende tekst.
-                            </div>
-                        </div>
-                        <div class="p-3 border rounded">
-                            <div class="font-medium">Konklusjon</div>
-                            <div class="text-sm text-slate-600 mt-1">
-                                Tydelige anbefalinger og prioriterte tiltak.
-                            </div>
-                        </div>
-                        <div class="p-3 border rounded">
-                            <div class="font-medium">Kommunikasjon</div>
-                            <div class="text-sm text-slate-600 mt-1">
-                                Rask oppfølging og tilgjengelighet.
-                            </div>
-                        </div>
-                        <div class="p-3 border rounded">
-                            <div class="font-medium">Tilpasning</div>
-                            <div class="text-sm text-slate-600 mt-1">
-                                Rapporter tilpasset formål (salg, forsikring,
-                                regnskap).
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto mb-12">
-        <div class="bg-white p-6 rounded-md shadow-soft">
-            <h2 class="text-2xl font-semibold text-primary mb-3">
-                Trygghet gjennom faglig tyngde
-            </h2>
-            <p class="text-slate-600 mb-4">
-                Frøyen Takst bygger på erfaring, faglig kompetanse og lokal
-                markedskunnskap. Vi leverer vurderinger du kan stole på — enten
-                det gjelder salg, kjøp eller forsikringsoppgjør.
-            </p>
-
-            <div class="flex flex-wrap gap-3">
-                <div class="badge">Sertifiserte takstmenn</div>
-                <div class="badge">Ansvarsforsikret</div>
-                <div class="badge">Lokal ekspertise</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto text-center">
-        <h3 class="text-xl font-semibold mb-3">
-            Klar for en uforpliktende prat?
-        </h3>
-        <p class="text-slate-600 mb-6">
-            Fyll ut skjemaet på kontaktsiden eller ring oss direkte for raskt
-            svar og tilbud.
-        </p>
-        <div class="flex items-center justify-center gap-4">
-            <a href="/kontakt" class="btn btn-primary">Kontakt oss</a>
-            <a href="/referanser" class="text-slate-700 underline"
-                >Se referanser</a
-            >
-        </div>
-    </section>
+  <!-- Klar for prat -->
+  <Prat />
 </Layout>

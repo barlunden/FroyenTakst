@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+import portrett from "../../public/images/thomasFroyen.webp";
+---
+
+<section class="max-w-6xl mx-auto my-20">
+  <div class="flex flex-col md:flex-row gap-8 items-center">
+    <!-- Bilde mobil først, desktop til høyre -->
+    <div
+      class="relative w-full md:w-1/4 shrink-0 mb-6 md:mb-0 md:order-2 flex justify-center"
+    >
+      <Image src={portrett} alt="Portrett av Thomas Frøyen" class="rounded-lg shadow-lg w-full h-auto md:w-full object-cover" />
+    
+      <div
+        class="absolute bottom-2 right-2 bg-white p-1 rounded-lg shadow-md w-14 h-14 flex items-center justify-center md:bottom-4 md:right-4 md:w-20 md:h-20"
+      >
+        <img
+          src="/images/mesterIkon.webp"
+          alt="Mesterlauget Logo"
+          class="w-full h-auto"
+        />
+      </div>
+    </div>
+    <div class="w-full md:w-3/4">
+      <h2 class="text-2xl font-semibold text-primary mb-3">Om Frøyen Takst</h2>
+      <p class="text-slate-600 mb-4">
+        Frøyen Takst AS eies og drives av Thomas Frøyen, autorisert tømrer,
+        byggmester og takstmann med mer enn 20 års erfaring fra byggebransjen.
+        Vi tilbyr grundige tilstandsrapporter og faglige vurderinger ved
+        bolighandel, rehabilitering og prosjektering. Hovedsakelig opererer vi i
+        Bergen og omegn, men vi tar oppdrag andre steder i landet ved behov.
+      </p>
+      <div class="flex flex-col gap-3 font-medium text-blue-700">
+        <a
+          href="tel:+4740099909"
+          class="flex items-center justify-center md:justify-start gap-2 hover:underline"
+        >
+          <span class="text-xl">📞</span> 400 99 909
+        </a>
+        <a
+          href="mailto:thomas@froyentakst.no"
+          class="flex items-center justify-center md:justify-start gap-2 hover:underline"
+        >
+          <span class="text-xl">✉️</span> Send oss en e-post
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
