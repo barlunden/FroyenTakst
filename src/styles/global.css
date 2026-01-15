@@ -1,4 +1,5 @@
 @import "tailwindcss/index.css";
+@plugin "@tailwindcss/typography";
 
 /* Use the package's exported stylesheet entrypoint to avoid resolving
    non-exported internal paths (e.g. "./components"). Tailwind's
