@@ -1,0 +1,49 @@
+{
+  "tabellPriser": [
+    {
+      "kategori": "LEILIGHET",
+      "elementer": [
+        { "navn": "Ny leilighet (under 5 år gammel) i blokk", "pris": "7 900,-" },
+        { "navn": "Leilighet", "pris": "9 000,-" },
+        { "navn": "Leilighet i loftsetasje eller i u.etg/kjeller", "pris": "10 000,-" },
+        { "navn": "Leilighet i flermannsbolig (2-6 enheter)*", "pris": "13 000,-", "bold": true, "italic": true }
+      ],
+      "fotnote": "*Flere bygningsdeler må kontrolleres dersom det er få enheter i samme bygg..."
+    },
+    {
+      "kategori": "BOLIG (Enebolig, rekkehus etc.)",
+      "elementer": [
+        { "navn": "Enebolig/fritidsbolig", "pris": "18 500,-" },
+        { "navn": "Rekkehus/tomannsbolig", "pris": "17 000,-" },
+        { "navn": "** Tillegg pr. ekstra boenhet/utleiedel/hybel", "pris": "3 000,-", "italic": true },
+        { "navn": "*** Tillegg for boliger over 250m2", "pris": "Etter avtale", "italic": true }
+      ]
+    }
+  ],
+  "tilleggsBygg": {
+    "tittel": "TILLEGG UTOVER KRAV I FORSKRIFT",
+    "navn": "Vurdering av tilleggsbygg (garasje, uthus, naust etc)",
+    "pris": "3 000,- pr.stk"
+  },
+  "tjenesteKort": [
+    {
+      "tittel": "Reklamasjon/Skadetakst",
+      "info": "Basert på medgått tid.",
+      "pris": "2 000,-",
+      "enhet": "/ time"
+    },
+    {
+      "tittel": "Verdi-/Lånetakst",
+      "typer": [
+        { "label": "Leilighet", "pris": "6 500,-" },
+        { "label": "Enebolig", "pris": "8 500,-" }
+      ]
+    },
+    {
+      "tittel": "Forenklet lånetakst",
+      "typer": [
+        { "label": "Leilighet", "pris": "4 500,-" }
+      ]
+    }
+  ]
+}
