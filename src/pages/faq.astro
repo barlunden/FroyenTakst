@@ -2,200 +2,91 @@
 import Layout from "../layouts/Layout.astro";
 
 const title = "Ofte stilte spørsmål — Frøyen Takst";
-const description =
-    "Ofte stilte spørsmål om befaring, hulltaking, bad og fukt. Praktiske råd før befaring og informasjon om hulltaking og vedlikehold.";
+const description = "Praktisk informasjon om befaring, hulltaking, bad og fukt. Få svar på det du lurer på før takstmannen kommer.";
 ---
 
 <Layout {title} {description}>
-    <article class="max-w-4xl mx-auto prose prose-slate">
-        <header class="mb-6">
-            <h1 class="text-3xl md:text-4xl font-bold text-primary">
+    <article class="max-w-4xl mx-auto px-4 py-12">
+        <header class="mb-16 text-center">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-primary">
                 Ofte stilte spørsmål
             </h1>
-            <p class="text-slate-600 mt-2">
-                Praktisk informasjon og tips i forbindelse med befaring og
-                tilstandsrapport. Nederst finner du informasjon om hulltaking og
-                illustrerende bilder.
+            <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Her har vi samlet svar på de vanligste spørsmål kundane våre har i forbindelse med befaring og tilstandsrapport.
             </p>
         </header>
 
-        <section class="mb-8">
-            <h2 class="text-xl font-semibold mb-2">
-                Hva må være klart før takstmann kommer på befaring?
-            </h2>
-            <p class="text-sm text-slate-600 mb-3">
-                Boligen trenger ikke å være «foto- eller visningsklar», men det
-                er en fordel om sluk er rengjort og at det er god tilgang til
-                bygningsdeler som skal kontrolleres.
-            </p>
+        <div class="space-y-12">
+            <section class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                    <span class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-primary text-sm">01</span>
+                    Klargjøring før befaring
+                </h2>
+                <div class="prose prose-slate max-w-none">
+                    <p>Boligen trenger ikke å være «foto- eller visningsklar», men det er en fordel om det er god tilgang til bygningsdeler som skal kontrolleres.</p>
+                    <p class="font-semibold text-slate-800">Følgende bør være klart:</p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                        <li>Sluk må være rengjort og tilgjengelig.</li>
+                        <li>Fordeler- og sikringsskap må kunne åpnes.</li>
+                        <li>Sikret tilgang til kaldtloft og krypkjeller.</li>
+                        <li>Sikker tilgang til tak (stigesikring).</li>
+                        <li>Dokumentasjon på utførte arbeider.</li>
+                    </ul>
+                </div>
+            </section>
 
-            <p class="text-sm text-slate-600 mb-3">
-                Følgende punkter bør være klargjort før stedlig befaring i
-                forbindelse med tilstandsrapport:
-            </p>
-            <ul class="list-disc pl-5 text-sm text-slate-600 mb-3">
-                <li>
-                    Sluk må være tilgjengelig på befaringsdagen og rengjort for
-                    vurdering.
-                </li>
-                <li>
-                    Fordelerskap og sikringsskap må kunne åpnes for vurdering.
-                </li>
-                <li>
-                    Tilgang til kaldtloft via sikret stige eller tilsvarende,
-                    samt tilgang til krypkjeller.
-                </li>
-                <li>
-                    Det må etableres sikker tilgang til taket, for eksempel
-                    forankret stige eller stillas ved behov.
-                </li>
-                <li>
-                    Fremlegg dokumentasjon på utførte arbeider i boligen hvis
-                    dette foreligger.
-                </li>
-            </ul>
+            <section class="space-y-6">
+                <div class="border-l-4 border-[#e4a11b] pl-6 py-2">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-3 text-balance">Hva er hulltaking og hvorfor er det påkrevd?</h2>
+                    <p class="text-slate-600 leading-relaxed max-w-3xl text-sm md:text-base">
+                        Forskrift fra 2022 krever at det bores hull i vegg tilstøtende våtsone for å søke etter fukt. Vi borer normalt fra tilstøtende rom for å måle bak dusjsonen. Hullet (min. 73 mm) plugges etterpå med et nøytralt hvitt deksel.
+                    </p>
+                </div>
 
-            <p class="text-sm text-slate-600">
-                I en tilstandsrapport kontrolleres blant annet: våtrom og
-                kjøkken, tilgjengelige vannrør (sjekkes for lekkasjer),
-                kjeller/krypekjeller/rom under terreng og bygningskonstruksjon
-                (tak, vegger, grunnmur osv.).
-            </p>
-        </section>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {[1, 2, 3, 4].map((num) => (
+                        <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-2 transition-all hover:border-primary/30">
+                            <img
+                                src={`/images/hull${num}.webp`}
+                                alt={`Eksempel på hulltaking ${num}`}
+                                class="aspect-square w-full rounded-lg object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                loading="lazy"
+                            />
+                            <p class="mt-2 text-[10px] text-center uppercase tracking-wider text-slate-400 font-bold">Eksempel {num}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
 
-        <section class="mb-8">
-            <h2 class="text-xl font-semibold mb-2">Hva er hulltaking?</h2>
-            <p class="text-sm text-slate-600 mb-3">
-                Forskrift gjeldende fra 01.01.2022 krever at det bores hull i
-                vegg tilstøtende bad/våtsone samt i eventuelle påforede vegger
-                under terreng (underetasje) for å kunne søke etter fukt. På bad
-                borer vi hull fra tilstøtende rom med hensikt å kunne
-                gjennomføre fuktmåling bak dusjsone. Hullet som bores skal ha en
-                diameter på minimum 73 mm. Etter gjennomført hulltaking plugges
-                hullet med et rundt hvitt deksel.
-            </p>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <h3 class="font-bold text-slate-900 mb-2">Hvor lang levetid har et bad?</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Estimert normal levetid er ofte rundt 20 år, men utførelse av membran og vedlikehold avgjør. Et korrekt utført bad kan vare betydelig lengre.</p>
+                </div>
 
-            <p class="text-sm text-slate-600 mb-4">
-                Dersom hjemmelshaver motsetter seg hulltaking vil dette
-                fremkomme av rapporten og manglende hulltaking må stå som
-                selgers ansvar.
-            </p>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <h3 class="font-bold text-slate-900 mb-2">Vond lukt fra sluk?</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Skyldes ofte uttørking eller ansamling av såperester. Prøv rengjøring og vann. Vedvarer problemet bør det undersøkes av fagkyndig.</p>
+                </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <figure class="bg-white p-3 rounded border">
-                    <img
-                        src="/images/hull1.webp"
-                        alt="Hulltaking eksempel 1"
-                        class="w-full rounded"
-                    />
-                    <figcaption class="text-xs text-slate-500 mt-2">
-                        Hulltaking — eksempel 1
-                    </figcaption>
-                </figure>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <h3 class="font-bold text-slate-900 mb-2">Kondens på vinduer?</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Skyldes ofte høy luftfuktighet inne mot kalde flater. God ventilasjon og unngåelse av klesvask i oppholdsrom hjelper.</p>
+                </div>
 
-                <figure class="bg-white p-3 rounded border">
-                    <img
-                        src="/images/hull2.webp"
-                        alt="Hulltaking eksempel 2"
-                        class="w-full rounded"
-                    />
-                    <figcaption class="text-xs text-slate-500 mt-2">
-                        Hulltaking — eksempel 2
-                    </figcaption>
-                </figure>
-
-                <figure class="bg-white p-3 rounded border">
-                    <img
-                        src="/images/hull3.webp"
-                        alt="Hulltaking eksempel 3"
-                        class="w-full rounded"
-                    />
-                    <figcaption class="text-xs text-slate-500 mt-2">
-                        Hulltaking — eksempel 3
-                    </figcaption>
-                </figure>
-
-                <figure class="bg-white p-3 rounded border">
-                    <img
-                        src="/images/hull4.webp"
-                        alt="Hulltaking eksempel 4"
-                        class="w-full rounded"
-                    />
-                    <figcaption class="text-xs text-slate-500 mt-2">
-                        Hulltaking — eksempel 4
-                    </figcaption>
-                </figure>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <h3 class="font-bold text-slate-900 mb-2">Hvorfor dokumentasjon?</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Særlig for bad er dokumentasjon avgjørende for verdien, da tettesjikt er skjult under flisene og ikke kan kontrolleres visuelt.</p>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <section class="mb-8">
-            <h2 class="text-xl font-semibold mb-2">
-                Hvor lang levetid har et bad?
-            </h2>
-            <p class="text-sm text-slate-600 mb-3">
-                Det er vanskelig å gi et eksakt svar — mange faktorer påvirker
-                levetiden. Produktene som er benyttet som tettesjikt (membran),
-                utførelse av gjennomføringer og slukets oppbygning er
-                avgjørende. Ofte estimerer vi normal forventet levetid rundt 20
-                år, men korrekt utførte bad kan vare betydelig lengre, avhengig
-                av vedlikehold og bruk.
+        <aside class="mt-20 p-10 bg-primary rounded-3xl text-center text-white shadow-xl">
+            <h3 class="text-2xl text-blue-50! font-bold mb-3">Trenger du videre hjelp?</h3>
+            <p class="text-blue-100! mb-8 max-w-md mx-auto">
+                Vi gir råd og vurderinger basert på over 20 års praktisk erfaring. Ta kontakt for en uforpliktende prat.
             </p>
-            <p class="text-sm text-slate-600">
-                Ønsker du en kontroll av bad anbefaler vi å kontakte en
-                fagkyndig takstmann for en kontroll før eventuelle kostbare
-                oppgraderinger planlegges.
-            </p>
-        </section>
-
-        <section class="mb-8">
-            <h2 class="text-xl font-semibold mb-2">
-                Det lukter vondt av sluket. Hva gjør jeg?
-            </h2>
-            <p class="text-sm text-slate-600">
-                Vond lukt fra sluk kan skyldes at sluket har stått tørt over tid
-                og samlet såperester og hår. Prøv å tilføre sluket vann og
-                rengjøring. Hvis problemet vedvarer, bør du få sluket undersøkt
-                av en fagkyndig takstmann.
-            </p>
-        </section>
-
-        <section class="mb-8">
-            <h2 class="text-xl font-semibold mb-2">
-                Hvorfor kommer det kondens på innsiden av vinduene?
-            </h2>
-            <p class="text-sm text-slate-600 mb-3">
-                Kondens på vinduer skyldes ofte høy relativ luftfuktighet
-                innendørs kombinert med kalde vindusflater. Dette er vanlig i
-                eldre boliger. Kondens er synlig og gir en indikasjon på at
-                ventilasjonen bør forbedres. Unngå å tørke klær innendørs i
-                oppholdsrom og sørg for god ventilasjon på badet.
-            </p>
-            <p class="text-sm text-slate-600">
-                Frøyen Takst har erfaring med fuktrelaterte problemstillinger og
-                kan bistå med befaring ved mistanke om fuktskader.
-            </p>
-        </section>
-
-        <section class="mb-12">
-            <h2 class="text-xl font-semibold mb-2">
-                Hvorfor er dokumentasjon på utført arbeid viktig?
-            </h2>
-            <p class="text-sm text-slate-600">
-                Spesielt for bad er dokumentasjon viktig for å kunne vise hva
-                som er gjort og hvilke produkter som er valgt. Tettesjikt og
-                membraner ligger ofte skjult under fliser og kan sjelden
-                kontrolleres uten riving. Be alltid om dokumentasjon på utført
-                arbeid, gjerne med bilder fra før flislegging.
-            </p>
-        </section>
-
-        <aside class="p-6 bg-white rounded-md shadow-soft text-center">
-            <h3 class="text-lg font-semibold mb-2">Trenger du videre hjelp?</h3>
-            <p class="text-sm text-slate-600 mb-4">
-                Ta kontakt for befaring eller spørsmål — vi gir råd og
-                vurderinger basert på faglig kompetanse og praktisk erfaring.
-            </p>
-            <a href="/kontakt" class="btn btn-primary">Kontakt oss</a>
+            <a href="/kontakt" class="btn-white">Kontakt oss</a>
         </aside>
     </article>
 </Layout>

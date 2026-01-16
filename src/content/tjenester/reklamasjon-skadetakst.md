@@ -1,9 +1,11 @@
 ---
 title: "Reklamasjonstakst ved eierskifte"
 description: "En objektiv vurdering av årsak, omfang og konsekvenser ved tvist etter boligkjøp eller forsikringsskade."
-heroImage: "/images/reklamasjon.jpg"
+heroImage: "/images/skadetakst.jpg"
 order: 2
 ---
+
+![Skadetakst](/images/skadetakst.jpg)
 
 Ved tvist etter boligkjøp er det avgjørende å ha et grundig, dokumentert og uavhengig faglig grunnlag. En reklamasjonstakst utført av bygningssakkyndig gir en objektiv vurdering av årsak, omfang og konsekvenser av påståtte avvik eller feil ved eiendommen.
 

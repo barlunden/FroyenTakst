@@ -23,12 +23,12 @@ const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.dat
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-md font-medium">
-        <a href="/" class="text-slate-700 hover:text-[#0f3b66]">Forside</a>
+        <a href="/" class="text-slate-700 hover:text-primary">Forside</a>
 
         <div class="relative group">
           <a
             href="/tjenester"
-            class="text-slate-700 hover:text-[#0f3b66] flex items-center gap-1 py-4"
+            class="text-slate-700 hover:text-primary flex items-center gap-1 py-4"
           >
             Tjenester
             <svg
@@ -46,7 +46,7 @@ const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.dat
             {sorterteTjenester.map((t) => (
               <a
                 href={`/tjenester/${t.slug}`}
-                class="block px-5 py-2.5 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#0f3b66] transition-colors"
+                class="block px-5 py-2.5 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors"
               >
                 {t.data.title}
               </a>
@@ -54,11 +54,11 @@ const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.dat
           </div>
         </div>
 
-        <a href="/prisliste" class="text-slate-700 hover:text-[#0f3b66]">Prisliste</a>
-        <a href="/faq" class="text-slate-700 hover:text-[#0f3b66]">FAQ</a>
+        <a href="/prisliste" class="text-slate-700 hover:text-primary">Prisliste</a>
+        <a href="/faq" class="text-slate-700 hover:text-primary">FAQ</a>
         <a
           href="/kontakt"
-          class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0f3b66] text-white! rounded-lg shadow-md hover:bg-[#0d3358] transition-all hover:scale-105 active:scale-95"
+          class="btn-primary"
         >
           Kontakt
         </a>
@@ -88,7 +88,7 @@ const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.dat
         {sorterteTjenester.map((t) => (
           <a
             href={`/tjenester/${t.slug}`}
-            class="block py-2 text-slate-600 hover:text-[#0f3b66]"
+            class="block py-2 text-slate-600 hover:text-primary"
           >
             {t.data.title}
           </a>
@@ -101,7 +101,7 @@ const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.dat
       <a href="/faq" class="block text-slate-700 font-medium">Ofte stilte spørsmål</a>
       <a
         href="/kontakt"
-        class="block py-3 px-4 bg-[#0f3b66] text-white text-center rounded-xl font-bold"
+        class="block py-3 px-4 bg-primary text-white text-center rounded-xl font-bold"
       >
         Kontakt oss
       </a>

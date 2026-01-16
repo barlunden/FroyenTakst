@@ -1,282 +1,172 @@
 @import "tailwindcss/index.css";
 @plugin "@tailwindcss/typography";
 
-/* Use the package's exported stylesheet entrypoint to avoid resolving
-   non-exported internal paths (e.g. "./components"). Tailwind's
-   `index.css` includes preflight, base/components and utilities. */
-
-/*
-  Frøyen Takst — global stylesheet (Tailwind v4 compatible)
-
-  - Uses Tailwind v4 entry points via @import
-  - Avoids mixing v3 `@tailwind` rules with v4 imports
-  - Keeps a plain-CSS approach for shared tokens and small components
-  - Minimal use of framework-specific directives so it stays robust
-*/
-
-/* Design tokens */
-:root {
-    --color-primary: #0f3b66; /* mørk blå aksent */
-    --color-primary-600: #0d3358;
-    --color-accent: #e4a11b; /* valgfri sekundær aksent */
-    --neutral-bg: #f3f4f6; /* lys grå bakgrunn */
-    --surface: #ffffff;
-    --text-default: #0f172a;
-    --text-muted: #475569;
-    --radius-md: 0.5rem;
-    --shadow-sm: 0 1px 2px rgba(15, 59, 102, 0.06);
-    --shadow-soft: 0 6px 18px rgba(15, 59, 102, 0.08);
-    --site-max: 1100px;
+/* ---------------------------------------------------------
+   DESIGN TOKENS (Tailwind v4 CSS Variables)
+   --------------------------------------------------------- */
+@theme {
+  --color-primary: #0f3b66;
+  --color-primary-hover: #0d3358;
+  --color-accent: #e4a11b;
+  --color-neutral-bg: #f3f4f6;
+  
+  --shadow-soft: 0 6px 18px rgba(15, 59, 102, 0.08);
 }
 
-/* -------------------------
-   Base / Global element styles
-   ------------------------- */
-html,
-body {
-    height: 100%;
+.prose img {
+    @apply rounded-2xl shadow-md border border-slate-100;
 }
+/* global.css */
 
-body {
-    background-color: var(--neutral-bg);
-    color: var(--text-default);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family:
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        "Segoe UI",
-        Roboto,
-        "Helvetica Neue",
-        Arial,
-        "Noto Sans";
-    line-height: 1.5;
-    margin: 0;
-}
+/* global.css */
 
-/* Make images responsive and avoid inline gaps */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Link default */
-a {
-    color: var(--color-primary);
-    text-underline-offset: 3px;
-}
-
-/* Container utility for consistent horizontal padding & max width */
-.container {
-    max-width: var(--site-max);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    box-sizing: border-box;
-}
-
-/* Headings */
-h1,
-h2,
-h3,
-h4 {
-    color: var(--text-default);
-    letter-spacing: -0.01em;
-    margin-top: 0;
-}
-
-/* -------------------------
-   Buttons and controls (CSS-only)
-   ------------------------- */
-.btn {
+/* Felles stil for alle knappar */
+.btn-primary, .btn-outline, .btn-white {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    border-radius: var(--radius-md);
-    padding: 0.5rem 1rem;
-    transition:
-        background-color 0.12s ease,
-        color 0.12s ease,
-        box-shadow 0.12s ease;
+    border-radius: 0.75rem; /* rounded-xl */
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: none !important;
+    font-size: 0.875rem;
     border: none;
-    box-sizing: border-box;
 }
 
+@media (min-width: 768px) {
+    .btn-primary, .btn-outline, .btn-white {
+        font-size: 1rem;
+    }
+}
+
+/* Spesifikke variantar */
 .btn-primary {
     background-color: var(--color-primary);
-    color: white;
-    box-shadow: var(--shadow-sm);
+    color: white !important;
+    box-shadow: 0 4px 6px -1px rgba(15, 59, 102, 0.1);
 }
 
 .btn-primary:hover {
-    background-color: var(--color-primary-600);
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(15, 59, 102, 0.2);
 }
 
-.btn-primary:focus {
-    outline: 3px solid rgba(15, 59, 102, 0.12);
-    outline-offset: 3px;
-}
-
-.btn-ghost {
-    background: transparent;
-    color: inherit;
-    border: 1px solid rgba(15, 59, 102, 0.06);
-}
-
-/* -------------------------
-   Cards, badges and small components
-   ------------------------- */
-.card {
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.5s ease;
-    background: var(--surface);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    padding: 1rem;
-    box-sizing: border-box;
-}
-
-.card:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: var(--shadow-md);
-    border-color: #3b82f6;
-}
-.card i, .card svg {
-  transition: transform 0.5s ease;
-}
-
-.card:hover i, .card:hover svg {
-  transform: scale(1.1) rotate(3deg);
-  color: #0f3b66; /* Endrar farge på ikonet ved hover */
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    background: rgba(15, 59, 102, 0.06);
-    color: var(--color-primary);
-    font-weight: 700;
-    font-size: 0.75rem;
-}
-
-/* -------------------------
-   Form primitives (lightweight)
-   ------------------------- */
-.form-input,
-.form-textarea,
-.form-select {
-    width: 100%;
-    border-radius: 0.375rem;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    background: var(--surface);
-    border: 1px solid rgba(15, 23, 42, 0.06);
-    color: var(--text-default);
-    box-sizing: border-box;
-}
-
-.form-textarea {
-    min-height: 8rem;
-    resize: vertical;
-}
-
-.form-input:focus,
-.form-textarea:focus,
-.form-select:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(15, 59, 102, 0.06);
-    border-color: var(--color-primary-600);
-}
-
-/* -------------------------
-   Small utilities (used by layout)
-   ------------------------- */
-.bg-neutralBg {
-    background-color: var(--neutral-bg) !important;
-}
-.text-primary {
-    color: var(--color-primary) !important;
-}
-.bg-primary {
-    background-color: var(--color-primary) !important;
-}
-.shadow-soft {
-    box-shadow: var(--shadow-soft) !important;
-}
-
-/* Tailwind-like helper for hover used in components */
-.hover\:bg-primary\/90:hover {
-    background-color: rgba(15, 59, 102, 0.9) !important;
-}
-
-/* -------------------------
-   Accessibility helpers
-   ------------------------- */
-.skip-link {
-    position: absolute;
-    left: -10000px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-}
-
-.skip-link:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0.5rem 0.75rem;
-    background: var(--color-primary);
-    color: white;
-    z-index: 1000;
-    border-radius: 4px;
-}
-
-/* -------------------------
-   Content readability tweaks
-   ------------------------- */
-article :is(h2, h3) {
-    scroll-margin-top: 4rem;
-}
-
-p,
-ul,
-ol {
-    margin-bottom: 0.875rem;
-    color: var(--text-muted);
-}
-
-/* ... eksisterende stiler ... */
-
-/* ... eksisterende stiler ... */
-
-.btn-ghost-white {
+.btn-outline {
     background-color: transparent;
-    border: 1px solid #fff;
-    color: #fff;
+    border: 2px solid #e2e8f0; /* slate-200 */
+    color: #475569 !important; /* slate-600 */
 }
 
-.btn-ghost-white:hover {
-    background-color: #fff;
-    color: #1e293b; /* tilsvarer text-slate-800 */
+.btn-outline:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary) !important;
+    background-color: rgba(15, 59, 102, 0.02);
 }
 
-.card-transparent {
-    background-color: rgba(0, 0, 0, 0.2);
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-    border-radius: 0.375rem; /* rounded-md */
-    padding: 1rem; /* p-4 */
+.btn-white {
+    background-color: white;
+    color: var(--color-primary) !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
+.btn-white:hover {
+    background-color: #f8fafc; /* slate-50 */
+    transform: scale(1.05);
+}
 
-/* End of file */
+/* Aktiv-tilstand (når ein trykker) */
+.btn-primary:active, .btn-outline:active, .btn-white:active {
+    transform: scale(0.96);
+}
+
+/* ---------------------------------------------------------
+   BASE STYLES
+   --------------------------------------------------------- */
+:root {
+  --site-max: 1100px;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+  /* Plass for fixed navbar: */
+  scroll-padding-top: 7rem; 
+}
+
+body {
+  background-color: var(--color-neutral-bg);
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* RENSKA BILDE-STIL:
+   Vi fjernar 'height: auto' som tvinga logoar til å bli store.
+   No vil Tailwind sine h-16, h-20 etc. fungere som dei skal.
+*/
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Lenker */
+a {
+  color: var(--color-primary);
+  text-decoration-skip-ink: auto;
+  transition: color 0.2s ease;
+}
+
+/* ---------------------------------------------------------
+   TYPOGRAPHY TWEAKS
+   --------------------------------------------------------- */
+h1, h2, h3, h4 {
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+/* Standard tekst-farge for avsnitt og lister */
+p, li {
+  color: #475569; /* Slate 600 */
+}
+
+/* ---------------------------------------------------------
+   UTILITIES & COMPONENTS (Kun det nødvendige)
+   --------------------------------------------------------- */
+
+/* Knapp-primitiv viss du ikkje vil skrive alle klassane kvar gong */
+.btn-base {
+  @apply inline-flex items-center justify-center font-bold rounded-lg px-5 py-2.5 transition-all cursor-pointer;
+}
+
+/* Kort-effektar som er vanskelege å gjere med berre Tailwind-klassar */
+.card-hover-effect {
+  @apply transition-all duration-500 ease-out bg-white rounded-xl shadow-sm border border-slate-100;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-4px);
+  @apply shadow-lg border-primary/20;
+}
+
+/* For å unngå at prose-klassar øydelegg for sidetitlar */
+.not-prose {
+  all: revert;
+}
+
+/* Tilgjengelegheit */
+.skip-link {
+  @apply absolute -left-full top-auto w-1 h-1 overflow-hidden focus:static focus:w-auto focus:h-auto focus:bg-primary focus:text-white focus:p-3 focus:z-50 focus:rounded-md;
+}
+
+/* Print-innstillingar */
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+}

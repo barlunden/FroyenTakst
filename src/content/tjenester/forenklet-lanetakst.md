@@ -5,6 +5,8 @@ heroImage: "/images/forenklet-takst.jpg"
 order: 4
 ---
 
+![Forenklet lånetakst](/images/lanetakst.jpg)
+
 Når vi utfører en verdi- og lånetakst, anslår vi verdien av både bygningsmasse og tomt. Faktorer som bygningens generelle stand, eventuelle feil eller mangler, solforhold, utsikt og beliggenhet spiller alle inn i vurderingen.
 
 Vi anbefaler normalt verdi- og lånetakst når en bolig skal refinansieres, eller ved oppgjør i forbindelse med arv eller skilsmisse. 

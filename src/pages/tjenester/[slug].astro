@@ -18,21 +18,21 @@ const { Content } = await render(entry);
   <article class="max-w-4xl mx-auto px-6 py-12">
     
     <header class="mb-12 not-prose">
-      <h1 class="text-3xl md:text-5xl font-extrabold text-[#0f3b66] tracking-tight">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-primary tracking-tight">
         {entry.data.title}
       </h1>
-      <div class="mt-4 h-1.5 w-20 bg-[#0f3b66] rounded-full"></div>
+      <div class="mt-4 h-1.5 w-20 bg-primary rounded-full"></div>
     </header>
 
     <div class="prose prose-slate lg:prose-xl max-w-none 
-      prose-headings:text-[#0f3b66] prose-headings:font-bold
-      prose-li:marker:text-[#0f3b66]">
+      prose-headings:text-primary prose-headings:font-bold
+      prose-li:marker:text-primary">
       <Content />
     </div>
 
     <aside class="not-prose mt-16 p-8 bg-slate-50 rounded-2xl border border-slate-200 text-center">
       <h3 class="text-2xl font-bold text-slate-900 mb-4">Bestill {entry.data.title.toLowerCase()}</h3>
-      <a href="/kontakt" class="inline-block bg-[#0f3b66] text-white! font-bold py-3 px-8 rounded-lg">
+      <a href="/kontakt" class="btn-primary">
         Ta kontakt i dag
       </a>
     </aside>
