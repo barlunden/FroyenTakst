@@ -42,34 +42,6 @@
   }
 }
 
-.card {
-  transition:
-    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.5s ease;
-  background: white;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-.card:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: var(--shadow-md);
-  border-color: #3b82f6;
-}
-
-.card i,
-.card svg {
-  transition: transform 0.5s ease;
-}
-
-.card:hover i,
-.card:hover svg {
-  transform: scale(1.1) rotate(3deg);
-  color: #0f3b66; /* Endrar farge på ikonet ved hover */
-}
-
 .badge {
   display: inline-flex;
   align-items: center;
@@ -182,6 +154,49 @@ li {
   color: #475569; /* Slate 600 */
 }
 
+/* global.css */
+/* global.css */
+
+/* Hovudklasse for alle kort */
+.card-base {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #f1f5f9; /* slate-100 */
+    box-shadow: 0 4px 6px -1px rgba(15, 59, 102, 0.05);
+    display: block;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Variant for korta som skal hoppe (MSP) */
+.card-interactive {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 6px -1px rgba(15, 59, 102, 0.05);
+    display: block;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    cursor: pointer;
+}
+
+.card-interactive:hover {
+    transform: translateY(-8px);
+    border-color: rgba(15, 59, 102, 0.2);
+    box-shadow: 0 20px 25px -5px rgba(15, 59, 102, 0.1);
+}
+
+/* Animasjon for ikon inni korta */
+.card-interactive:hover svg, 
+.card-interactive:hover i {
+    transform: scale(1.1) rotate(3deg);
+    color: #0f3b66; /* var(--color-primary) */
+}
+
+.card-interactive svg {
+    transition: all 0.5s ease;
+}
 /* ---------------------------------------------------------
    UTILITIES & COMPONENTS (Kun det nødvendige)
    --------------------------------------------------------- */
