@@ -11,12 +11,12 @@ interface Props {
   canonicalURL?: string;
 }
 
-const {
-  title = "Frøyen Takst | Sertifisert Takstmann",
-  description = "Profesjonell boligtaksering, tilstandsrapport og verditakst. Rask levering og faglig tyngde for en trygg bolighandel.",
-  image = "/images/froyenTakst.png",
-  canonicalURL = Astro.url.href,
+const { 
+  title = "Frøyen Takst", 
+  description = "",
+  image = "/images/froyenTakst.png" // Sørg for at dette matchar filnamnet nøyaktig
 } = Astro.props;
+const canonicalImageURL = new URL(image, Astro.url);
 ---
 
 <!doctype html>
@@ -26,7 +26,7 @@ const {
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href={canonicalImageURL} />
 
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -36,14 +36,14 @@ const {
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image" content={canonicalImageURL} />
     <meta property="og:locale" content="nb_NO" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={Astro.url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+    <meta name="twitter:image" content={canonicalImageURL} />
 
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
