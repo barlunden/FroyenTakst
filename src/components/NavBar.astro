@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import ContactDrawer from './ContactDrawer.astro';
 
 // Hent alle tenester og sorter dei etter 'order' feltet frå frontmatter
 const tjenester = await getCollection('tjenester');
@@ -56,12 +57,7 @@ const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.dat
 
         <a href="/prisliste" class="text-slate-700 hover:text-primary">Prisliste</a>
         <a href="/faq" class="text-slate-700 hover:text-primary">FAQ</a>
-        <a
-          href="/kontakt"
-          class="btn-primary"
-        >
-          Kontakt
-        </a>
+        <button class="trigger-contact-drawer btn-primary">Kontakt</button>
       </nav>
 
       <div class="md:hidden">
@@ -99,12 +95,7 @@ const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.dat
     <div class="pt-4 space-y-4 border-t border-slate-100">
       <a href="/prisliste" class="block text-slate-700 font-medium">Prisliste</a>
       <a href="/faq" class="block text-slate-700 font-medium">Ofte stilte spørsmål</a>
-      <a
-        href="/kontakt"
-        class="block py-3 px-4 bg-primary text-white text-center rounded-xl font-bold"
-      >
-        Kontakt oss
-      </a>
+      <button class="trigger-contact-drawer btn-primary">Kontakt oss</button>
     </div>
   </div>
 </div>

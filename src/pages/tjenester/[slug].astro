@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/PageHeader.astro"; // Importér komponenten
 import { getCollection, render } from "astro:content";
+import ContactDrawer from "../../components/ContactDrawer.astro";
 
 export async function getStaticPaths() {
   const tjenesteEntries = await getCollection("tjenester");
@@ -39,9 +40,7 @@ const { Content } = await render(entry);
       <p>
         Trenger du hjelp med {entry.data.title.toLowerCase()}? Vi leverer grundige rapporter med rask levering i hele Bergen og omegn.
       </p>
-      <a href="/kontakt" class="btn-white">
-        Ta kontakt i dag
-      </a>
+      <button class="trigger-contact-drawer btn-white mt-6">Kontakt oss i dag</button>
     </aside>
     
   </article>
