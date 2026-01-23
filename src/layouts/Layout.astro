@@ -3,67 +3,86 @@ import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import ContactDrawer from "../components/ContactDrawer.astro";
-const { title = "Frøyen Takst", description = "" } = Astro.props;
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = "Frøyen Takst | Sertifisert Takstmann",
+  description = "Profesjonell boligtaksering, tilstandsrapport og verditakst. Rask levering og faglig tyngde for en trygg bolighandel.",
+  image = "/images/logoFroyenTakst.jpg",
+  canonicalURL = Astro.url.href,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="nb">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>{title}</title>
-        {description && <meta name="description" content={description} />}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        {
-            description && (
-                <meta property="og:description" content={description} />
-            )
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:locale" content="nb_NO" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Frøyen Takst" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+
+  <body
+    class="min-h-screen bg-gray-50 text-slate-800 antialiased flex flex-col"
+  >
+    <NavBar />
+
+    <main class="flex-1 pt-28">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-12">
+        <slot />
+      </div>
+    </main>
+
+    <Footer />
+
+    <ContactDrawer />
+
+    <script type="module">
+      // Flytta meny-logikken til ein funksjon som toler View Transitions
+      function setupMenu() {
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+        if (toggle && menu) {
+          toggle.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+          });
         }
-        <meta property="og:image" content="/images/logoFroyenTakst.jpg" />
-        <meta property="og:locale" content="nb_NO" />
-
-        <!-- Twitter -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        {
-            description && (
-                <meta name="twitter:description" content={description} />
-            )
-        }
-        <meta name="twitter:image" content="/images/logoFroyenTakst.jpg" />
-
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    </head>
-
-    <body
-        class="min-h-screen bg-gray-50 text-slate-800 antialiased flex flex-col"
-    >
-        <!-- NavBar -->
-        <NavBar />
-
-        <!-- Main content -->
-        <main class="flex-1 pt-28">
-            <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-12">
-                <slot />
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <Footer />
-        <ContactDrawer />
-
-        <!-- Small inline script for toggling mobile menu -->
-        <script type="module">
-            const toggle = document.getElementById("menu-toggle");
-            const menu = document.getElementById("mobile-menu");
-            if (toggle && menu) {
-                toggle.addEventListener("click", () => {
-                    menu.classList.toggle("hidden");
-                });
-            }
-        </script>
-    </body>
+      }
+      setupMenu();
+      document.addEventListener("astro:after-swap", setupMenu);
+    </script>
+  </body>
 </html>
