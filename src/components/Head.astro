@@ -8,19 +8,19 @@ interface Props {
 
 const { title, description, image = '/images/froyenTakst.png' } = Astro.props;
 
-/** * Astro.url.origin hentar domenet du er på akkurat no 
- * (t.d. 'https://froyentakst.no' eller 'https://ditt-prosjekt.netlify.app')
+/** * Vi definerer basen for alle absolutte URL-ar.
+ * 1. Vi sjekkar først Astro.site (frå astro.config.mjs).
+ * 2. Som reserve brukar vi Astro.url.origin (fungerer bra på Netlify og lokalt).
  */
-const currentOrigin = Astro.url.origin;
+const siteBase = Astro.site ? Astro.site.origin : Astro.url.origin;
 
-// Vi lagar absolutte URL-ar basert på kvar vi er "her og no"
-const canonicalURL = new URL(Astro.url.pathname, currentOrigin);
-const socialImageURL = new URL(image, currentOrigin);
+// Vi lagar absolutte URL-ar som sosiale medium krev
+const canonicalURL = new URL(Astro.url.pathname, siteBase).href;
+const socialImageURL = new URL(image, siteBase).href;
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
 <link rel="canonical" href={canonicalURL} />
