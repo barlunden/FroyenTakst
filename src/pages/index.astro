@@ -6,18 +6,18 @@ import OmOss from "../components/OmOss.astro";
 const title = "Frøyen Takst — Hjem";
 const description =
   "Takstmann i Bergen — Frøyen Takst leverer tilstandsrapporter, verdivurderinger og skadetaksering med over 25 års byggfaglig erfaring.";
+const image = "/images/froyenTakst.png"; // <--- VIKTIG: Send med bildet her!
 ---
 
-<Layout {title} {description}>
+<Layout title={title} description={description} image={image}>
   <!-- Header -->
   <Header />
 
   <!-- Selling points -->
   <SellingPoints />
-  
+
   <!-- Om oss -->
   <OmOss />
 
   <!-- Klar for prat -->
-  
 </Layout>
