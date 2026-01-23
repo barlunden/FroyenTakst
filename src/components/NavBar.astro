@@ -6,9 +6,9 @@ const tjenester = await getCollection('tjenester');
 const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 ---
 
-<header class="fixed top-0 left-0 w-full bg-white/60 backdrop-blur-sm border-b z-50">
+<header class="fixed top-0 left-0 w-full bg-white/60 backdrop-blur-sm border-b border-slate-400/50 shadow-md z-50">
   <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-28">
+    <div class="flex items-center justify-between h-32">
       <a
         href="/"
         class="flex items-center gap-3 rounded-md shadow-slate-500/50 hover:scale-101 transition-all shadow-lg"

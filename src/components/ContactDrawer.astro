@@ -1,0 +1,43 @@
+---
+import ContactForm from "./ContactForm.astro";
+---
+
+<button id="open-drawer" class="btn-primary">
+  Send oss en melding
+</button>
+
+<div id="drawer-overlay" class="fixed inset-0 bg-slate-900/50 z-99 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<div id="contact-drawer" class="fixed top-0 right-0 h-full w-full max-w-lg bg-white z-100 shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-8 overflow-y-auto">
+  <div class="flex justify-between items-center mb-8 border-b pb-4">
+    <h2 class="text-2xl font-bold text-primary">Kontakt oss</h2>
+    <button id="close-drawer" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  
+  <p class="text-slate-600 mb-8 text-sm italic">
+    Fyll ut skjemaet under, så kontakter vi deg så snart som mulig.
+  </p>
+
+  <ContactForm />
+</div>
+
+<script>
+  const openBtn = document.getElementById('open-drawer');
+  const closeBtn = document.getElementById('close-drawer');
+  const overlay = document.getElementById('drawer-overlay');
+  const drawer = document.getElementById('contact-drawer');
+  const body = document.body;
+
+  function toggleDrawer() {
+    drawer?.classList.toggle('translate-x-full');
+    overlay?.classList.toggle('opacity-0');
+    overlay?.classList.toggle('pointer-events-none');
+    body.classList.toggle('overflow-hidden'); // Hindrer scrolling bak modalen
+  }
+
+  openBtn?.addEventListener('click', toggleDrawer);
+  closeBtn?.addEventListener('click', toggleDrawer);
+  overlay?.addEventListener('click', toggleDrawer);
+</script>

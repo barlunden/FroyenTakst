@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
 import { getCollection } from "astro:content";
 
 // Hent alle tenester og sorter dei etter 'order'
@@ -11,19 +12,17 @@ const description = "Frøyen Takst tilbyr profesjonell taksering i Bergen og ome
 ---
 
 <Layout {title} {description}>
-    <article class="max-w-4xl mx-auto px-4 py-12">
-        <header class="mb-12 text-center">
-            <h1 class="text-3xl md:text-5xl font-extrabold text-primary">
-                Våre tjenester
-            </h1>
-            <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                Vi tilbyr en rekke takseringstjenester for å gi deg trygghet ved bolighandel, skadesaker eller finansiering.
-            </p>
-        </header>
+    <article class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+        
+        {/* Her brukar vi komponenten i staden for vanleg HTML-header */}
+        <PageHeader 
+            title="Våre tjenester" 
+            description="Vi tilbyr en rekke takseringstjenester for å gi deg trygghet ved bolighandel, skadesaker eller finansiering." 
+        />
 
         <section class="grid gap-6 mb-16">
             {sorterteTjenester.map((tjeneste) => (
-                <div class="group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-[#0f3b66]/30 transition-all flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                <div class="group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col sm:flex-row items-start sm:items-center gap-6">
                     <div class="flex-1">
                         <h2 class="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors">
                             {tjeneste.data.title}

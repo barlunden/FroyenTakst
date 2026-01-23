@@ -1,8 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import priserData from "../data/priser.json";
+import PageHeader from "../components/PageHeader.astro";
 
-// TypeScript-definisjonar for å fjerne alle feilmeldingar
+// TypeScript-definisjoner
 interface PrisElement {
   navn: string;
   pris: string;
@@ -39,71 +40,126 @@ interface PrisData {
 
 const priser = priserData as PrisData;
 const title = "Prisliste — Frøyen Takst";
-const description = "Prisliste for tjenester fra Frøyen Takst: verdi- og lånetakst, forenklet lånetakst, og reklamasjon/skadetakst i Bergen og omegn.";
+const description =
+  "Prisliste for tjenester fra Frøyen Takst. Se våre veiledende fra-priser for tilstandsrapport, verditakst og skadetakst i Bergen og omegn.";
+
+/** * Hjelpefunksjon for å avgjøre om vi skal vise "Fra"
+ * Sjekker om prisen er numerisk og om det ikke er en timepris
+ */
+const shouldShowFra = (pris: string, enhet?: string) => {
+  const p = pris.toLowerCase();
+  const e = enhet?.toLowerCase() || "";
+
+  // Ikke vis "Fra" hvis prisen inneholder tekst som "avtale" eller "forespørsel"
+  if (p.includes("avtale") || p.includes("forespørsel")) return false;
+
+  // Ikke vis "Fra" på timepriser
+  if (e.includes("time") || p.includes("time")) return false;
+
+  return true;
+};
+
+/**
+ * Hjelpefunksjon for å formatere selve prisstrengen
+ */
+const formatPrice = (pris: string) => {
+  if (pris.toLowerCase().includes("avtale")) return pris;
+  return `kr ${pris}`;
+};
 ---
 
 <Layout {title} {description}>
-  <article class="max-w-6xl mx-auto px-4 py-12">
-    <header class="mb-8 text-center md:text-left">
-      <h1 class="text-3xl md:text-4xl font-bold text-slate-900">Prisliste</h1>
-      <p class="mt-3 text-slate-600">
-        Her er en oversikt over våre priser. Alle priser er inkludert mva.
-      </p>
-    </header>
-
-    <section class="mb-12">
-      <div class="overflow-hidden border border-gray-200 rounded-xl shadow-sm">
-        <table class="min-w-full divide-y divide-gray-200 bg-white">
-          <thead class="bg-gray-50">
+  <article class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+    <PageHeader
+      title="Prisliste"
+      description="Her er ein oversikt over våre veiledende priser. Endelig pris fastsettes basert på oppdragets omfang og eiendommens størrelse. Alle priser inkluderer mva."
+    />
+    <section class="mb-16">
+      <div
+        class="elevation-3d rounded-2xl overflow-hidden border border-slate-200"
+      >
+        <table class="min-w-full divide-y divide-slate-200 bg-white">
+          <thead class="bg-slate-50">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-widest"
+              >
                 Priskategori
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Pris (kr)
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-widest"
+              >
+                Pris
               </th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200">
-            {priser.tabellPriser.map((kat) => (
-              <>
-                <tr class="bg-slate-50/50">
-                  <td colspan="2" class="px-6 py-3 text-sm font-bold text-slate-900 uppercase tracking-wide">
-                    {kat.kategori}
-                  </td>
-                </tr>
-                {kat.elementer.map((item) => (
-                  <tr class="hover:bg-gray-50 transition-colors">
-                    <td class={`px-6 py-3 text-sm text-gray-700 ${item.bold ? 'font-bold' : ''} ${item.italic ? 'italic' : ''}`}>
-                      {item.navn}
-                    </td>
-                    <td class="px-6 py-3 text-sm font-semibold text-gray-900 whitespace-nowrap">
-                      {item.pris}
+          <tbody class="divide-y divide-slate-100">
+            {
+              priser.tabellPriser.map((kat) => (
+                <>
+                  <tr class="bg-slate-50/80">
+                    <td
+                      colspan="2"
+                      class="px-6 py-4 text-sm font-extrabold text-primary uppercase tracking-wider"
+                    >
+                      {kat.kategori}
                     </td>
                   </tr>
-                ))}
-                {kat.fotnote && (
-                  <tr>
-                    <td colspan="2" class="px-6 py-3 text-xs text-slate-500 italic leading-relaxed bg-white">
-                      {kat.fotnote}
-                    </td>
-                  </tr>
-                )}
-              </>
-            ))}
-            
-            {/* Tilleggsbygg-seksjon */}
-            <tr class="bg-slate-50/50">
-              <td colspan="2" class="px-6 py-3 text-sm font-bold text-slate-900 uppercase">
+                  {kat.elementer.map((item) => (
+                    <tr class="hover:bg-blue-50/30 transition-colors">
+                      <td
+                        class={`px-6 py-4 text-sm text-slate-700 ${item.bold ? "font-bold" : ""} ${item.italic ? "italic" : ""}`}
+                      >
+                        {item.navn}
+                      </td>
+                      <td class="px-6 py-4 text-sm font-bold text-slate-900 whitespace-nowrap">
+                        {shouldShowFra(item.pris) && (
+                          <span class="text-[10px] font-bold text-slate-300 uppercase italic mr-1">
+                            Fra
+                          </span>
+                        )}
+                        {formatPrice(item.pris)}
+                      </td>
+                    </tr>
+                  ))}
+                  {kat.fotnote && (
+                    <tr>
+                      <td
+                        colspan="2"
+                        class="px-6 py-4 text-xs text-slate-400 italic leading-relaxed bg-white"
+                      >
+                        {kat.fotnote}
+                      </td>
+                    </tr>
+                  )}
+                </>
+              ))
+            }
+
+            {/* Tilleggsbygg */}
+            <tr class="bg-slate-50/80">
+              <td
+                colspan="2"
+                class="px-6 py-4 text-sm font-extrabold text-primary uppercase tracking-wider"
+              >
                 {priser.tilleggsBygg.tittel}
               </td>
             </tr>
             <tr>
-              <td class="px-6 py-3 text-sm text-gray-700">
+              <td class="px-6 py-4 text-sm text-slate-700">
                 {priser.tilleggsBygg.navn}
               </td>
-              <td class="px-6 py-3 text-sm font-semibold text-gray-900">
-                {priser.tilleggsBygg.pris}
+              <td class="px-6 py-4 text-sm font-bold text-slate-900">
+                {
+                  shouldShowFra(priser.tilleggsBygg.pris) && (
+                    <span class="text-[10px] font-bold text-slate-300 uppercase italic mr-1">
+                      Fra
+                    </span>
+                  )
+                }
+                {formatPrice(priser.tilleggsBygg.pris)}
               </td>
             </tr>
           </tbody>
@@ -111,58 +167,112 @@ const description = "Prisliste for tjenester fra Frøyen Takst: verdi- og lånet
       </div>
     </section>
 
-    <section class="mb-12 prose max-w-none">
-      <div class="p-6 bg-blue-50 border border-blue-100 rounded-xl text-slate-700 space-y-3">
-        <p><strong>Bolig:</strong> enebolig, fritidsbolig, rekkehus, halvpart-2-mannsbolig og ¼-part 4-mannsbolig.</p>
-        <p><strong>Leilighet:</strong> vurdering av boenhet uten fellesdeler utenfor leilighetens bruksareal (BRA).</p>
-        <p class="text-sm italic text-slate-500">
-          * Prisen gjelder i utgangspunktet boliger opp til ca 250-300 m². Be om pris ved boliger større enn 300 m² eller ved boliger av mer spesiell karakter.
+    <section class="mb-16">
+      <div
+        class="p-8 bg-white border-l-4 border-primary elevation-3d rounded-xl"
+      >
+        <div class="grid md:grid-cols-2 gap-8 text-slate-700">
+          <div>
+            <p class="font-bold text-slate-900 mb-2">Bolig:</p>
+            <p class="text-sm">
+              Enebolig, fritidsbolig, rekkehus, halvpart-2-mannsbolig og ¼-part
+              4-mannsbolig.
+            </p>
+          </div>
+          <div>
+            <p class="font-bold text-slate-900 mb-2">Leilighet:</p>
+            <p class="text-sm">
+              Vurdering av boenhet uten fellesdeler utenfor leilighetens
+              bruksareal (BRA).
+            </p>
+          </div>
+        </div>
+        <p
+          class="mt-6 text-xs italic text-slate-400 border-t border-slate-100 pt-4"
+        >
+          * Prisen gjelder i utgangspunktet boliger opp til ca 250-300 m². Be om
+          pris ved boliger større enn 300 m² eller ved boliger av mer spesiell
+          karakter.
         </p>
       </div>
     </section>
 
-    <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
-      {priser.tjenesteKort.map((kort) => (
-        <div class="card-base">
-          <div>
-            <h2 class="text-xl font-bold text-slate-900 mb-2">{kort.tittel}</h2>
-            {kort.info && <p class="text-sm text-slate-600 mb-4">{kort.info}</p>}
-            
-            <div class="space-y-4">
-              {kort.typer ? (
-                kort.typer.map((type, index) => (
-                  <div>
-                    <div class="flex justify-between items-end">
-                      <span class="text-sm text-slate-600">{type.label}</span>
-                      <span class="text-xl font-bold text-slate-900">kr {type.pris}</span>
-                    </div>
-                    {index < kort.typer!.length - 1 && <hr class="mt-2 border-gray-100" />}
-                  </div>
-                ))
-              ) : (
-                <div class="mt-2">
-                  <div class="text-2xl font-bold text-slate-900">
-                    kr {kort.pris} <span class="text-sm font-normal text-slate-500">{kort.enhet}</span>
-                  </div>
-                </div>
+    <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
+      {
+        priser.tjenesteKort.map((kort) => (
+          <div class="card-base border-t-4 border-t-primary flex flex-col">
+            <div class="flex flex-col h-full">
+              <h2 class="text-xl font-bold text-slate-900 mb-3">
+                {kort.tittel}
+              </h2>
+              {kort.info && (
+                <p class="text-sm text-slate-500 mb-6 italic leading-relaxed">
+                  {kort.info}
+                </p>
               )}
+
+              <div class="space-y-4">
+                {kort.typer ? (
+                  kort.typer.map((type, index) => (
+                    <div>
+                      <div class="flex justify-between items-baseline">
+                        <span class="text-xs font-medium text-slate-400 uppercase tracking-tight">
+                          {type.label}
+                        </span>
+                        <div class="flex items-baseline gap-1">
+                          {shouldShowFra(type.pris) && (
+                            <span class="text-[10px] font-bold text-slate-300 uppercase italic">
+                              Fra
+                            </span>
+                          )}
+                          <span class="text-lg font-bold text-primary">
+                            {formatPrice(type.pris)}
+                          </span>
+                        </div>
+                      </div>
+                      {index < kort.typer!.length - 1 && (
+                        <hr class="mt-2 border-slate-50" />
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <div class="mt-2 pt-4 border-t border-slate-50">
+                    <div class="text-3xl font-black text-primary flex items-baseline gap-2">
+                      {shouldShowFra(kort.pris || "", kort.enhet) && (
+                        <span class="text-xs font-bold text-slate-300 uppercase italic">
+                          Fra
+                        </span>
+                      )}
+                      {formatPrice(kort.pris || "")}
+                      <span class="text-xs font-normal text-slate-400 uppercase ml-1">
+                        {kort.enhet}
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Dette elementet vil nå alltid ligge helt nederst */}
+              <p class="text-[10px] text-slate-400 mt-auto pt-8 uppercase tracking-widest font-bold italic">
+                Inkludert mva
+              </p>
             </div>
           </div>
-          <p class="text-xs text-slate-400 mt-6 italic">Inkludert mva</p>
-        </div>
-      ))}
+        ))
+      }
     </section>
 
-    <aside class="p-8 bg-slate-100 rounded-2xl text-center text-white shadow-lg">
-      <h3 class="text-xl font-bold mb-3">
-        Finner du ikke det du leter etter eller har en spesiell eiendom?
+    <aside
+      class="p-10 bg-primary rounded-3xl text-center text-white elevation-3d border-none"
+    >
+      <h3 class="text-2xl font-bold mb-4 italic">
+        Finner du ikke det du leter etter?
       </h3>
-      <p class="text-slate-300 mb-6 max-w-2xl mx-auto">
-        Ta kontakt med oss — oppgi gjerne adresse og hvilken type tjeneste du er ute etter, så kommer vi tilbake med et uforpliktende tilbud.
+      <p class="text-blue-100/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Ta kontakt med oss — oppgi gjerne adresse og hvilken type tjeneste du er
+        ute etter, så kommer vi tilbake med et uforpliktende tilbud.
       </p>
-      <a href="/kontakt" class="btn-primary">
-        Kontakt oss
-      </a>
+      <a href="/kontakt" class="btn-white"> Kontakt oss </a>
     </aside>
   </article>
 </Layout>

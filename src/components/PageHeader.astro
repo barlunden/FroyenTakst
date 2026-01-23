@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  italic?: boolean;
+}
+const { title, description, italic = true } = Astro.props;
+---
+<header class="mb-16 text-center">
+  <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+    {title}
+  </h1>
+  <div class="h-1.5 w-20 bg-accent rounded-full mx-auto mt-6"></div>
+  {description && (
+    <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+      {description}
+    </p>
+  )}
+</header>
