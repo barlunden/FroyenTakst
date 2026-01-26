@@ -5,11 +5,15 @@
 <form
     id="contact-form"
     class="space-y-4"
-    method="post"
-    action="#"
-    novalidate
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    name="kontakt-skjema"
 >
-    <input type="hidden" name="form-name" value="contact" />
+    <input type="hidden" name="form-name" value="kontakt-skjema" />
+    <p class="hidden">
+        <label>Ikke fyll ut dette hvis du er eit menneske: <input name="bot-field" /></label>
+    </p>
 
     <div>
         <label for="name" class="block text-sm font-medium text-slate-700">Navn</label>
@@ -18,7 +22,7 @@
             name="name"
             type="text"
             required
-            class="form-input mt-1"
+            class="form-input mt-1 w-full"
             placeholder="Fullt navn"
         />
     </div>
@@ -31,7 +35,7 @@
                 name="email"
                 type="email"
                 required
-                class="form-input mt-1"
+                class="form-input mt-1 w-full"
                 placeholder="din@mail.no"
             />
         </div>
@@ -42,7 +46,7 @@
                 id="phone"
                 name="phone"
                 type="tel"
-                class="form-input mt-1"
+                class="form-input mt-1 w-full"
                 placeholder="+47 9X XX XX XX"
             />
         </div>
@@ -54,23 +58,23 @@
             id="message"
             name="message"
             rows="6"
-            class="form-textarea mt-1"
+            class="form-textarea mt-1 w-full"
             placeholder="Fortell kort om eiendommen og hva du ønsker hjelp med"
         ></textarea>
     </div>
 
     <div class="flex items-start gap-3 w-full">
-    <input
-        id="consent"
-        name="consent"
-        type="checkbox"
-        required
-        class="mt-1"
-    />
-    <label for="consent" class="text-sm text-slate-600 leading-tight">
-        Jeg samtykker til at opplysningene sendes for å få et svar fra Frøyen Takst.
-    </label>
-</div>
+        <input
+            id="consent"
+            name="consent"
+            type="checkbox"
+            required
+            class="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+        />
+        <label for="consent" class="text-sm text-slate-600 leading-tight">
+            Jeg samtykker til at opplysningene sendes for å få et svar fra Frøyen Takst.
+        </label>
+    </div>
 
     <div class="flex items-center gap-4">
         <button type="submit" class="btn-primary">Send melding</button>
@@ -88,29 +92,36 @@
             e.preventDefault();
 
             const formData = new FormData(form);
-            const name = formData.get("name");
-            const email = formData.get("email");
-            const consent = formData.get("consent");
-
-            if (!name || !email || !consent) {
+            
+            // Validering
+            if (!formData.get("name") || !formData.get("email") || !formData.get("consent")) {
                 status.textContent = "Vennligst fyll ut navn, e-post og samtykke.";
-                status.classList.remove("hidden");
                 status.className = "mt-4 text-sm font-medium text-amber-700";
+                status.classList.remove("hidden");
                 return;
             }
 
-            status.textContent = "Sender...";
-            status.classList.remove("hidden");
+            status.textContent = "Sender melding...";
             status.className = "mt-4 text-sm font-medium text-slate-600";
+            status.classList.remove("hidden");
 
             try {
-                // Her kan du legge inn faktisk fetch mot API eller Netlify
-                await new Promise((res) => setTimeout(res, 800));
-                status.textContent = "Takk! Meldingen er sendt. Vi tar kontakt så snart som mulig.";
-                status.className = "mt-4 text-sm font-medium text-emerald-700";
-                form.reset();
+                // Her sender vi data til Netlify sin "usynlege" endpoint
+                const response = await fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData as any).toString(),
+                });
+
+                if (response.ok) {
+                    status.textContent = "Takk! Meldingen er sendt. Vi tar kontakt så snart som mulig.";
+                    status.className = "mt-4 text-sm font-medium text-emerald-700";
+                    form.reset();
+                } else {
+                    throw new Error();
+                }
             } catch (err) {
-                status.textContent = "Noe gikk galt. Vennligst prøv igjen eller ring oss direkte.";
+                status.textContent = "Noe gikk galt. Vennligst prøv igjen eller send oss en e-post direkte.";
                 status.className = "mt-4 text-sm font-medium text-red-700";
             }
         });
