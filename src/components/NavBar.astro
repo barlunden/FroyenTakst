@@ -46,7 +46,7 @@ const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.dat
           >
             {sorterteTjenester.map((t) => (
               <a
-                href={`/tjenester/${t.slug}`}
+                href={`/tjenester/${t.id}`}
                 class="block px-5 py-2.5 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors"
               >
                 {t.data.title}
@@ -83,7 +83,7 @@ const sorterteTjenester = tjenester.sort((a, b) => (a.data.order || 99) - (b.dat
       <div class="grid grid-cols-1 gap-1 pl-2 border-l-2 border-slate-100">
         {sorterteTjenester.map((t) => (
           <a
-            href={`/tjenester/${t.slug}`}
+            href={`/tjenester/${t.id}`}
             class="block py-2 text-slate-600 hover:text-primary"
           >
             {t.data.title}
