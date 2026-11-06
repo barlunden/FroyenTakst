@@ -2,7 +2,10 @@
 // Diskret samtykkelinje nederst på sida. Ligg i fast posisjon, og <body> får
 // like mykje bunnmarg som linja er høg, slik at ingenting vert dekt.
 // Google Ads (gtag.js) vert først lasta etter at brukaren har sagt ja.
+// Målings-ID-ar er offentlege. GA-ID frå kunden er standard, kan overstyrast med miljøvariabel.
 const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "";
+const gaId = import.meta.env.PUBLIC_GA_ID ?? "G-RVKR18FHR4";
+const ids = [gaId, adsId].filter(Boolean).join(",");
 ---
 
 <div
@@ -10,7 +13,7 @@ const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "";
   role="region"
   aria-label="Informasjonskapsler"
   hidden
-  data-ads-id={adsId}
+  data-ids={ids}
   class="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-slate-300 shadow-[0_-4px_12px_rgba(15,59,102,0.08)] print:hidden"
 >
   <div
@@ -48,9 +51,10 @@ const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "";
     try { localStorage.setItem(KEY, v); } catch {}
   };
 
-  function loadAds(id: string) {
+  function loadAds(idList: string) {
     const w = window as any;
-    if (!id || w.__adsLoaded) return;
+    const ids = idList.split(",").filter(Boolean);
+    if (!ids.length || w.__adsLoaded) return;
     w.__adsLoaded = true;
     w.dataLayer = w.dataLayer || [];
     w.gtag = function () { w.dataLayer.push(arguments); };
@@ -64,13 +68,14 @@ const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "";
       ad_storage: "granted",
       ad_user_data: "granted",
       ad_personalization: "granted",
+      analytics_storage: "granted",
     });
     const s = document.createElement("script");
     s.async = true;
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${ids[0]}`;
     document.head.appendChild(s);
     w.gtag("js", new Date());
-    w.gtag("config", id);
+    ids.forEach((id) => w.gtag("config", id));
   }
 
   function show(banner: HTMLElement) {
@@ -86,7 +91,7 @@ const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "";
     const banner = document.getElementById("cookie-banner");
     if (!banner || banner.dataset.ready) return;
     banner.dataset.ready = "1";
-    const id = banner.dataset.adsId ?? "";
+    const id = banner.dataset.ids ?? "";
     const saved = read();
 
     if (saved === "granted") loadAds(id);
@@ -103,6 +108,7 @@ const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "";
             ad_storage: "denied",
             ad_user_data: "denied",
             ad_personalization: "denied",
+            analytics_storage: "denied",
           });
         }
         hide(banner);
