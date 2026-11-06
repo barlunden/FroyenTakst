@@ -1,0 +1,132 @@
+---
+// Diskret samtykkelinje nederst på sida. Ligg i fast posisjon, og <body> får
+// like mykje bunnmarg som linja er høg, slik at ingenting vert dekt.
+// Google Ads (gtag.js) vert først lasta etter at brukaren har sagt ja.
+const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "";
+---
+
+<div
+  id="cookie-banner"
+  role="region"
+  aria-label="Informasjonskapsler"
+  hidden
+  data-ads-id={adsId}
+  class="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-slate-300 shadow-[0_-4px_12px_rgba(15,59,102,0.08)] print:hidden"
+>
+  <div
+    class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-3 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6"
+  >
+    <p class="text-xs md:text-sm text-slate-600 leading-snug flex-1">
+      Vi bruker informasjonskapsler for å måle trafikk og forbedre nettsiden.
+    </p>
+    <div class="flex gap-2 shrink-0">
+      <button
+        type="button"
+        data-cookie-choice="denied"
+        class="rounded-lg border border-slate-300 px-4 py-2 text-xs md:text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+      >
+        Avvis
+      </button>
+      <button
+        type="button"
+        data-cookie-choice="granted"
+        class="rounded-lg bg-primary px-4 py-2 text-xs md:text-sm font-semibold text-white hover:bg-primary-hover transition-colors cursor-pointer"
+      >
+        Godta
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const KEY = "cookie-consent";
+
+  const read = () => {
+    try { return localStorage.getItem(KEY); } catch { return null; }
+  };
+  const write = (v: string) => {
+    try { localStorage.setItem(KEY, v); } catch {}
+  };
+
+  function loadAds(id: string) {
+    const w = window as any;
+    if (!id || w.__adsLoaded) return;
+    w.__adsLoaded = true;
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () { w.dataLayer.push(arguments); };
+    w.gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+    });
+    w.gtag("consent", "update", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+    });
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+    document.head.appendChild(s);
+    w.gtag("js", new Date());
+    w.gtag("config", id);
+  }
+
+  function show(banner: HTMLElement) {
+    banner.hidden = false;
+    document.body.style.paddingBottom = `${banner.offsetHeight}px`;
+  }
+  function hide(banner: HTMLElement) {
+    banner.hidden = true;
+    document.body.style.paddingBottom = "";
+  }
+
+  function init() {
+    const banner = document.getElementById("cookie-banner");
+    if (!banner || banner.dataset.ready) return;
+    banner.dataset.ready = "1";
+    const id = banner.dataset.adsId ?? "";
+    const saved = read();
+
+    if (saved === "granted") loadAds(id);
+    if (saved) hide(banner);
+    else show(banner);
+
+    banner.querySelectorAll<HTMLElement>("[data-cookie-choice]").forEach((b) => {
+      b.addEventListener("click", () => {
+        const choice = b.dataset.cookieChoice!;
+        write(choice);
+        if (choice === "granted") loadAds(id);
+        else if ((window as any).gtag) {
+          (window as any).gtag("consent", "update", {
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+          });
+        }
+        hide(banner);
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (!banner.hidden) document.body.style.paddingBottom = `${banner.offsetHeight}px`;
+    });
+  }
+
+  // Delegert lenke i footer for å endre valet seinare
+  document.addEventListener("click", (e) => {
+    if (!(e.target as HTMLElement).closest("[data-cookie-settings]")) return;
+    try { localStorage.removeItem(KEY); } catch {}
+    const banner = document.getElementById("cookie-banner");
+    if (banner) {
+      banner.hidden = false;
+      document.body.style.paddingBottom = `${banner.offsetHeight}px`;
+    }
+  });
+
+  // Kjør både ved første innlasting og etter hvert sidebytte (View Transitions)
+  document.addEventListener("astro:page-load", init);
+  if (document.readyState !== "loading") init();
+  else document.addEventListener("DOMContentLoaded", init);
+</script>
